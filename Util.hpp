@@ -27,8 +27,21 @@ string normalize(string word)
 	    case 0xc3:
 	      switch((unsigned char)word[pos+1])
 		{
-		case 0x8a:
+		  // Remove all diacritics form a's
+		case 0x80:
+		case 0x81:
+		case 0x82:
+		case 0x83:
+		case 0x84:
+		case 0x85:
+		case 0x86:
+		case 0xa0:
+		case 0xa1:
+		case 0xa2:
+		case 0xa3:
 		case 0xa4:
+		case 0xa5:
+		case 0xa6:
 		  result+='a';
 		  break;
 		case 0x96:

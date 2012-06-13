@@ -39,7 +39,7 @@ void Index<T>::insert(string filename)
   ifstream infile;
   infile.open(filename,ifstream::in);
   // Call the other insert method with the filestream
-  insert(&infile);
+  insert(&infile,filename);
 }
 
 template<class T>

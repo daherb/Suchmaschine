@@ -9,6 +9,7 @@
 #include "Util.hpp"
 #include "Index.hpp"
 #include "SimpleDocumentList.hpp"
+#include "DocumentInfo.hpp"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ class SimpleIndex: public Index<int>
 {
   public:
   // Insert files either by name or by filestream
-    void insert(string filename) {Index<int>::insert(filename); };
-    void insert(ifstream *in);
+  void insert(string filename) {Index<int>::insert(filename); };
+  void insert(ifstream *in, string filename);
   // Get document list by key
     DocumentList<int> *retrieve(string key);
   // Get all doc ids in the index
@@ -32,13 +33,20 @@ class SimpleIndex: public Index<int>
     unordered_map<string,pair<int,SimpleDocumentList>> inverted_index;
   // List of all doc ids
     SimpleDocumentList doc_ids;
+    DocumentInfo doc_info;
 };
 
 
-void SimpleIndex::insert(ifstream *in)
+void SimpleIndex::insert(ifstream *in, string filename)
 {
+  doc_info.set_filename(docid,filename);
   // Get next doc id
   int docid=doccount++;
+  // Get document language ...
+  /*
+    string lang=...;
+    doc_info.set_language(docid,language);
+  */
   // Store in the list of all doc ids
   doc_ids.add(docid);
   string word;

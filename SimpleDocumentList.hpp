@@ -8,10 +8,10 @@
 class SimpleDocumentList : public DocumentList<int>
 {
   public:
-  // Add document id
-    void add(int i);
+  // Add document id and term frequency
+  void add(int id);
   // Remove document id
-    void remove(int i);
+    void remove(int id);
   // Print list of document ids in the list
     void print();
     void to_stream(ostream *out);
@@ -21,18 +21,18 @@ class SimpleDocumentList : public DocumentList<int>
     SimpleDocumentList *complement(SimpleDocumentList dl); 
   private:
   // The set of doc ids
-    std::set<int> doclist;
+  unordered_map<int,int> doclist;
 };
 
 
-void SimpleDocumentList::add(int i)
+void SimpleDocumentList::add(int id)
 {
-  doclist.insert(i);
+  doclist[id]++;
 }
 
-void SimpleDocumentList::remove(int i)
+void SimpleDocumentList::remove(int id)
 {
-  doclist.insert(i);
+  doclist.erase(id);
 }
 
 SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)

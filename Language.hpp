@@ -11,6 +11,7 @@
 #include "Util.hpp"
 
 #define TOP_FACTOR 10
+
 using namespace std;
 
 class LanguageRecognizer {

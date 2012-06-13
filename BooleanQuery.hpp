@@ -122,6 +122,7 @@ void BooleanQuery::parse(string query,SimpleIndex i)
 
 SimpleDocumentList *BooleanQuery::get_result()
 {
+  // Do some ranking stuff: language, term count etc.
   return result;
 }
 
