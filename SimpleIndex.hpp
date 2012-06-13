@@ -39,9 +39,10 @@ class SimpleIndex: public Index<int>
 
 void SimpleIndex::insert(ifstream *in, string filename)
 {
-  doc_info.set_filename(docid,filename);
   // Get next doc id
   int docid=doccount++;
+  // Save filename info
+  doc_info.set_filename(docid,filename);
   // Get document language ...
   /*
     string lang=...;

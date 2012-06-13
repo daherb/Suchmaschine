@@ -1,4 +1,5 @@
-
+#ifndef _DOCUMENTINFO_HPP
+#define _DOCUMENTINFO_HPP
 class DocumentInfo
 {
   public:
@@ -8,7 +9,7 @@ class DocumentInfo
     string get_filename(int id);
   private:
   // Hash table with document id as key and pair of language and filename as value
-    unordered_map<int id, pair<string,string>> doc_info;
+    unordered_map<int, pair<string,string>> doc_info;
 };
 
 void DocumentInfo::set_language(int id, string language)
@@ -30,3 +31,5 @@ string DocumentInfo::get_filename(int id)
 {
   return doc_info[id].second;
 }
+
+#endif

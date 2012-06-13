@@ -19,7 +19,7 @@ class Index
   public:
   // Add files either by filename or by filestream
     void insert(string filename);
-    virtual void insert(ifstream *in) {};
+  virtual void insert(ifstream *in, string filename) {};
   // Return number of documents in the index
     int count() const;
   // Return document list for a term

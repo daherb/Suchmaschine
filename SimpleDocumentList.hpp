@@ -38,9 +38,8 @@ void SimpleDocumentList::remove(int id)
 SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)
 {
   SimpleDocumentList *result=new SimpleDocumentList();
-  std::set<int>::iterator it;
   // For all doc ids in dl
-  for (it=dl.doclist.begin();it!=dl.doclist.end();it++)
+  for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
     // If doc id in dl and in here -> add it to result
     if (this->doclist.count(*it)>0)
@@ -53,9 +52,8 @@ SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)
 SimpleDocumentList *SimpleDocumentList::unify(SimpleDocumentList dl)
 {
   SimpleDocumentList *result=new SimpleDocumentList();
-  std::set<int>::iterator it;
   // Add all doc ids in dl to result
-  for (it=dl.doclist.begin();it!=dl.doclist.end();it++)
+  for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
     result->add(*it);
   }
@@ -70,9 +68,8 @@ SimpleDocumentList *SimpleDocumentList::unify(SimpleDocumentList dl)
 SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
 {
   SimpleDocumentList *result=new SimpleDocumentList();
-  std::set<int>::iterator it;
   // For all elements in the universe dl
-  for (it=dl.doclist.begin();it!=dl.doclist.end();it++)
+  for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
     // If element not in here -> add to result
     if (this->doclist.count(*it)==0)
@@ -84,8 +81,7 @@ SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
 
 void SimpleDocumentList::to_stream(ostream *out)
 {
-  std::set<int>::iterator it;
-  for ( it=this->doclist.begin() ; it != this->doclist.end(); it++ )
+  for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
     *out << "|" << *it;
   *out << "|";
 }

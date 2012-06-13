@@ -13,6 +13,7 @@ void usage()
   cout << "\t -store <Filename>: Store the internal index to a file (Not yet implemented)" << endl;
   cout << "\t -restore <Filename>: Restore the internal index from a file (Not yet implemented)" << endl;
 }
+
 int main(int argc, char *argv[])
 {
   // Check if at least on command and for each command exactly one parameter
