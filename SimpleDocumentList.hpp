@@ -37,7 +37,7 @@ void SimpleDocumentList::remove(int id)
 
 SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)
 {
-  SimpleDocumentList *result=new SimpleDocumentList();
+  /*  SimpleDocumentList *result=new SimpleDocumentList();
   // For all doc ids in dl
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
@@ -45,13 +45,13 @@ SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)
     if (this->doclist.count(*it)>0)
       result->add(*it);
   }
-  return result;
+  return result;*/
 }
 
 
 SimpleDocumentList *SimpleDocumentList::unify(SimpleDocumentList dl)
 {
-  SimpleDocumentList *result=new SimpleDocumentList();
+  /*  SimpleDocumentList *result=new SimpleDocumentList();
   // Add all doc ids in dl to result
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
@@ -62,12 +62,12 @@ SimpleDocumentList *SimpleDocumentList::unify(SimpleDocumentList dl)
   {
     result->add(*it);
   }
-  return result;
+  return result; */
 }
 
 SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
 {
-  SimpleDocumentList *result=new SimpleDocumentList();
+  /*  SimpleDocumentList *result=new SimpleDocumentList();
   // For all elements in the universe dl
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
@@ -75,15 +75,15 @@ SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
     if (this->doclist.count(*it)==0)
       result->add(*it);
   }
-  return result;
+  return result; */
 }
 
 
 void SimpleDocumentList::to_stream(ostream *out)
 {
-  for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
+  /*  for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
     *out << "|" << *it;
-  *out << "|";
+    *out << "|";*/
 }
 
 void SimpleDocumentList::print()
