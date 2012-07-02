@@ -4,32 +4,23 @@ class DocumentInfo
 {
   public:
     void set_language(int id, string language);
-    void set_filename(int id, string filename);
-    string get_language(int id);
-    string get_filename(int id);
+  void set(int id, string tag, string filename);
+  string get(int id, string tag);
   private:
-  // Hash table with document id as key and pair of language and filename as value
-    unordered_map<int, pair<string,string>> doc_info;
+  // Hash of Hashes with document id as first key, Meta tag as second key and string as value of the Meta data
+  //unordered_map<int, pair<string,string>> doc_info;
+    unordered_map<int,unordered_map<string,string>> doc_info;
 };
 
-void DocumentInfo::set_language(int id, string language)
+void DocumentInfo::set(int id, string tag, string value)
 {
-  doc_info[id].first=language;
+  doc_info[id][tag]=value;
 }
 
-void DocumentInfo::set_filename(int id, string filename)
-{
-  doc_info[id].second=filename;
-}
 
-string DocumentInfo::get_language(int id)
+string DocumentInfo::get(int id, string tag)
 {
-  return doc_info[id].first;
-}
-
-string DocumentInfo::get_filename(int id)
-{
-  return doc_info[id].second;
+  return doc_info[id][tag];
 }
 
 #endif

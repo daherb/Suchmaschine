@@ -10,8 +10,8 @@ void usage()
   cout << "Possible commands:" << endl;
   cout << "\t -add <Filename>: Adds a file to the Index" << endl;
   cout << "\t -query <\"term1 [op1 term2 ...]\">: Query the Index" << endl;
-  cout << "\t -store <Filename>: Store the internal index to a file (Not yet implemented)" << endl;
-  cout << "\t -restore <Filename>: Restore the internal index from a file (Not yet implemented)" << endl;
+  cout << "\t -store <Filename>: Store the internal index to a file" << endl;
+  cout << "\t -restore <Filename>: Restore the internal index from a file" << endl;
 }
 
 int main(int argc, char *argv[])
@@ -81,12 +81,20 @@ int main(int argc, char *argv[])
 	      else
 		{
 		  // Execute query
-		  BooleanQuery q;
-		  q.parse(commands[pos].second,index);
+		  BooleanQuery q(&index);
+		  q.parse(commands[pos].second);
 		  // Get and print results
 		  SimpleDocumentList *r=q.get_result();
-		  cout << "Result for query: " << commands[pos].second << ":" << endl;
-		  r->print();
+#ifdef DEBUG
+		  cerr << "R size" << r->doclist.size() << endl;
+		  cerr << "R " << r << endl; 
+#endif
+		  cout << "Result for query \"" << commands[pos].second << "\":" << endl;
+		  //r->print();
+		  for (auto it=r->doclist.begin(); it!=r->doclist.end();++it)
+		    {
+		      cout << index.doc_info.get(it->first,"filename") << "\t" << it->second << endl;
+		    }
 		}
 	    }
 	}

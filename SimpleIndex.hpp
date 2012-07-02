@@ -10,15 +10,18 @@
 #include "Index.hpp"
 #include "SimpleDocumentList.hpp"
 #include "DocumentInfo.hpp"
+#include "Language.hpp"
 
 using namespace std;
 
 class SimpleIndex: public Index<int>
 {
   public:
+    DocumentInfo doc_info;
+    LanguageRecognizer lang_rec;
   // Insert files either by name or by filestream
-  void insert(string filename) {Index<int>::insert(filename); };
-  void insert(ifstream *in, string filename);
+    void insert(string filename) {Index<int>::insert(filename); };
+    void insert(ifstream *in, string filename);
   // Get document list by key
     DocumentList<int> *retrieve(string key);
   // Get all doc ids in the index
@@ -33,7 +36,6 @@ class SimpleIndex: public Index<int>
     unordered_map<string,pair<int,SimpleDocumentList>> inverted_index;
   // List of all doc ids
     SimpleDocumentList doc_ids;
-    DocumentInfo doc_info;
 };
 
 
@@ -42,12 +44,18 @@ void SimpleIndex::insert(ifstream *in, string filename)
   // Get next doc id
   int docid=doccount++;
   // Save filename info
-  doc_info.set_filename(docid,filename);
+  doc_info.set(docid,"filename",filename);
   // Get document language ...
-  /*
-    string lang=...;
-    doc_info.set_language(docid,language);
-  */
+  ifstream tempstream;
+  tempstream.open(filename);
+  set<string> *langs=lang_rec.recognize(&tempstream);
+  // Only set language if result is unambigous
+  string lang;
+  if (langs->size()==1)
+    lang=*(langs->begin());
+  else
+    lang="";
+  doc_info.set(docid,"language",lang);
   // Store in the list of all doc ids
   doc_ids.add(docid);
   string word;
@@ -108,10 +116,14 @@ void SimpleIndex::restore_index(ifstream *infile)
       stringstream docstream(sdoclist);
       while(!docstream.eof())
 	{
-	  string sdocnum;
-	  getline(docstream,sdocnum,'|');
-	  if (sdocnum!="")
-	    inverted_index[sword].second.add(atoi(sdocnum.c_str()));
+	  string sdocinfo;
+	  string sdocnum, sdoccount;
+	  getline(docstream,sdocinfo,'|');
+	  stringstream docinfostream(sdocinfo);
+	  getline(docinfostream,sdocnum,':');
+	  getline(docinfostream,sdoccount);
+	  if (sdocnum!=""&& sdoccount!="")
+	    inverted_index[sword].second.add(atoi(sdocnum.c_str()),atoi(sdoccount.c_str()));
 	}
     }
 }

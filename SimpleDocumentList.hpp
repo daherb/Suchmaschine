@@ -10,6 +10,7 @@ class SimpleDocumentList : public DocumentList<int>
   public:
   // Add document id and term frequency
   void add(int id);
+  void add(int id, int count);
   // Remove document id
     void remove(int id);
   // Print list of document ids in the list
@@ -19,15 +20,22 @@ class SimpleDocumentList : public DocumentList<int>
     SimpleDocumentList *intersect(SimpleDocumentList dl);  
     SimpleDocumentList *unify(SimpleDocumentList dl); 
     SimpleDocumentList *complement(SimpleDocumentList dl); 
-  private:
+  //#ifndef DEBUG
+  //  private:
+  //#endif
   // The set of doc ids
-  unordered_map<int,int> doclist;
+    unordered_map<int,int> doclist;
 };
 
 
 void SimpleDocumentList::add(int id)
 {
   doclist[id]++;
+}
+
+void SimpleDocumentList::add(int id, int count)
+{
+  doclist[id]+=count;
 }
 
 void SimpleDocumentList::remove(int id)
@@ -37,53 +45,56 @@ void SimpleDocumentList::remove(int id)
 
 SimpleDocumentList *SimpleDocumentList::intersect(SimpleDocumentList dl)
 {
-  /*  SimpleDocumentList *result=new SimpleDocumentList();
+  SimpleDocumentList *result=new SimpleDocumentList();
   // For all doc ids in dl
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
     // If doc id in dl and in here -> add it to result
-    if (this->doclist.count(*it)>0)
-      result->add(*it);
+    if (this->doclist.count(it->first)>0)
+      result->doclist[it->first]+=it->second; 
   }
-  return result;*/
+  return result;
 }
 
 
 SimpleDocumentList *SimpleDocumentList::unify(SimpleDocumentList dl)
 {
-  /*  SimpleDocumentList *result=new SimpleDocumentList();
+  SimpleDocumentList *result=new SimpleDocumentList();
   // Add all doc ids in dl to result
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
-    result->add(*it);
+    result->doclist[it->first]+=it->second;
   }
   // Add all doc ids in here to results -> the set avoids duplicates
-  for (it=this->doclist.begin();it!=this->doclist.end();it++)
+  for (auto it=this->doclist.begin();it!=this->doclist.end();it++)
   {
-    result->add(*it);
+    result->doclist[it->first]+=it->second;
   }
-  return result; */
+  return result; 
 }
 
 SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
 {
-  /*  SimpleDocumentList *result=new SimpleDocumentList();
+  SimpleDocumentList *result=new SimpleDocumentList();
   // For all elements in the universe dl
   for (auto it=dl.doclist.begin();it!=dl.doclist.end();it++)
   {
     // If element not in here -> add to result
-    if (this->doclist.count(*it)==0)
-      result->add(*it);
+    if (this->doclist.count(it->first)==0)
+      result->doclist[it->first]+=it->second;
   }
-  return result; */
+  return result; 
 }
 
 
 void SimpleDocumentList::to_stream(ostream *out)
 {
-  /*  for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
-    *out << "|" << *it;
-    *out << "|";*/
+#ifdef DEBUG
+  cerr << doclist.size() << " Elements" << endl;
+#endif
+    for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
+      *out << "|" << it-> first << ":" << it-> second;
+    *out << "|"; 
 }
 
 void SimpleDocumentList::print()
