@@ -20,8 +20,10 @@ class LanguageRecognizer {
     void training(string language, ifstream *in);
     set<string> *recognize(string line);
     set<string> *recognize(istream* in);
+    void to_file(string filename);
+    void to_stream(ostream *out);
   private:
-  unordered_map<string,set<string>> knowsyourlanguage;
+    unordered_map<string,set<string>> knowsyourlanguage;
 };
 
 void LanguageRecognizer::training(string language, string filename)
@@ -194,4 +196,23 @@ set<string> *LanguageRecognizer::recognize(istream *in)
   return res;
 }
 
+void LanguageRecognizer::to_file(string filename)
+{
+  ofstream outfile;
+  outfile.open(filename);
+  to_stream(&outfile);
+}
+
+void LanguageRecognizer::to_stream(ostream *out)
+{
+  for ( auto wordit = knowsyourlanguage.begin(); wordit != knowsyourlanguage.end(); ++wordit )
+    {
+      *out << wordit->first << "\t|";
+      for (auto langit=wordit->second.begin(); langit != wordit->second.end(); ++langit )
+	{
+	  *out << *langit << "|";
+	}
+      *out << endl;
+    }
+}
 #endif
