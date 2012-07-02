@@ -17,8 +17,9 @@ using namespace std;
 class BooleanQuery : public Query<int>
 {
   public: 
+    BooleanQuery(SimpleIndex *i);
   // Parse a boolean query
-    void parse(string query, SimpleIndex i);
+    void parse(string query);
   // Return the resulting document list
     SimpleDocumentList *get_result();
   private:
@@ -28,9 +29,15 @@ class BooleanQuery : public Query<int>
     vector<string> op_list;
   // The resulting DocumentList
     SimpleDocumentList *result=NULL;
+    SimpleIndex *inverted_index;
 };
 
-void BooleanQuery::parse(string query,SimpleIndex i)
+BooleanQuery::BooleanQuery(SimpleIndex *i)
+{
+  inverted_index=i;
+}
+
+void BooleanQuery::parse(string query)
 {
   vector<string> *v=tokenize(query);
   for (int pos=0; pos<(int)v->size();pos++)
@@ -63,7 +70,7 @@ void BooleanQuery::parse(string query,SimpleIndex i)
       SimpleDocumentList *dl1;
       if (resdl==NULL)
 	{
-	  dl1=(SimpleDocumentList *) i.retrieve(term_list[termpos]);
+	  dl1=(SimpleDocumentList *) inverted_index->retrieve(term_list[termpos]);
 	  termpos++;
 	}
       else
@@ -74,7 +81,7 @@ void BooleanQuery::parse(string query,SimpleIndex i)
       if (op_list[pos]=="and")
 	{
 	  // Get second operand
-	  SimpleDocumentList *dl2=(SimpleDocumentList *) i.retrieve(term_list[termpos]);
+	  SimpleDocumentList *dl2=(SimpleDocumentList *) inverted_index->retrieve(term_list[termpos]);
 	  // Save pointer for clean-up
 	  olddl=resdl;
 
@@ -88,7 +95,7 @@ void BooleanQuery::parse(string query,SimpleIndex i)
       // Or-Operator (quite like above)
       else if(op_list[pos]=="or")
 	{
-	  SimpleDocumentList *dl2=(SimpleDocumentList *) i.retrieve(term_list[termpos]);
+	  SimpleDocumentList *dl2=(SimpleDocumentList *) inverted_index->retrieve(term_list[termpos]);
 	  olddl=resdl;
 	  // Unify the Document Lists
 	  resdl=dl1->unify(*dl2);
@@ -101,28 +108,43 @@ void BooleanQuery::parse(string query,SimpleIndex i)
 	{
 	  olddl=resdl;
 	  // Get list of all documents in index to compute complement
-	  SimpleDocumentList *dl2=(SimpleDocumentList *) i.get_doc_ids();
+	  SimpleDocumentList *dl2=(SimpleDocumentList *) inverted_index->get_doc_ids();
 	  // Complement the Document Lists
 	  resdl=dl1->complement(*dl2);
 	  if (olddl!=NULL)
 	    delete olddl;
 	}
+#ifdef DEBUG
+      cerr << "Resdl size " << resdl->doclist.size() << endl;
+#endif
     }
   // Only a single term -> retrieve document list from index
   if (op_list.size()==0)
     {
-      resdl=(SimpleDocumentList *) i.retrieve(term_list[termpos]);
+      resdl=(SimpleDocumentList *) inverted_index->retrieve(term_list[termpos]);
+      // Workaround to get the results: A \cup A=A
+      resdl=resdl->unify(*resdl);
+#ifdef DEBUG
+      cerr << "Resdl size " << resdl->doclist.size() << endl;
+      cerr << "Resdl " << resdl << endl; 
+#endif
     }
 #ifdef DEBUG
-  printf("%p\n",resdl);
+    cerr << resdl << endl;
 #endif
   // Save result in object
   result=resdl;
+#ifdef DEBUG
+  cerr << "Result size " << result->doclist.size() << endl;
+  cerr << "Result " << result << endl; 
+#endif
 }
 
 SimpleDocumentList *BooleanQuery::get_result()
 {
   // Do some ranking stuff: language, term count etc.
+  cerr << "Result size " << result->doclist.size() << endl;
+  cerr << "Result " << result << endl; 
   return result;
 }
 
