@@ -6,12 +6,14 @@ using namespace std;
 
 void usage()
 {
-  cout << "main <Command_1> <Parameter_1> ... <Command_n> <Parameter_n>" << endl;
+  cout << "Searcher <Command_1> <Parameter_1> ... <Command_n> <Parameter_n>" << endl;
+  cout << "Search engine to manage a file index and search it" << endl;
   cout << "Possible commands:" << endl;
   cout << "\t -add <Filename>: Adds a file to the Index" << endl;
   cout << "\t -query <\"term1 [op1 term2 ...]\">: Query the Index" << endl;
   cout << "\t -store <Filename>: Store the internal index to a file" << endl;
   cout << "\t -restore <Filename>: Restore the internal index from a file" << endl;
+  cout << "\t -langfile <Filename>: Restore the language data from a file" << endl;
 }
 
 int main(int argc, char *argv[])
@@ -67,6 +69,22 @@ int main(int argc, char *argv[])
 #endif
 	    }
 	}
+      // Check for restore language data
+      for (int pos=0;pos<command_count;pos++)
+	{
+	  if (commands[pos].first=="-langfile")
+	    {
+	      if (!have_index)
+		{
+		  cerr << "No index to store additional language data" << endl;
+		  return -1;
+		}
+	      else
+		{
+		  index.lang_rec.restore(commands[pos].second);
+		}
+	    }
+	}
       // Check for queries
       for (int pos=0;pos<command_count;pos++)
 	{
@@ -93,7 +111,7 @@ int main(int argc, char *argv[])
 		  //r->print();
 		  for (auto it=r->doclist.begin(); it!=r->doclist.end();++it)
 		    {
-		      cout << index.doc_info.get(it->first,"filename") << "\t" << it->second << endl;
+		      cout << index.doc_info.get(it->first,"filename") << "\t" << it->second << "\t" << index.doc_info.get(it->first,"language") << endl;
 		    }
 		}
 	    }

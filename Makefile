@@ -1,6 +1,5 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall
-OUTFILE=main
 ifdef CLANG
 CC=clang
 OUTFILE=main_clang
@@ -10,6 +9,8 @@ ifdef DEBUG
 CFLAGS+=-ggdb -DDEBUG
 endif
 
-all: main
-main: Main.cpp *.hpp
-	$(CC) $(CFLAGS) -o $(OUTFILE) Main.cpp
+all: trainer searcher
+searcher: Searcher.cpp *.hpp
+	$(CC) $(CFLAGS) -o Searcher Searcher.cpp
+trainer: LanguageTrainer.cpp Language.hpp
+	$(CC) $(CFLAGS) -o Trainer LanguageTrainer.cpp
