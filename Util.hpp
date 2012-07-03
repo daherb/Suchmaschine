@@ -15,8 +15,33 @@ string normalize(string word)
     {
       
       // Handle UTF-8
+      // Copy six-byte characters
+      if (((unsigned char)word[pos]&0xfc)==0xfc)
+	{
+	  result+=word.substr(pos,6);
+	  pos+=5;
+	}
+      // Copy five-byte characters
+      else if (((unsigned char)word[pos]&0xf8)==0xf8)
+	{
+	  result+=word.substr(pos,5);
+	  pos+=4;
+	}
+      // Copy four-byte characters
+      else if (((unsigned char)word[pos]&0xf0)==0xf0)
+	{
+	  result+=word.substr(pos,4);
+	  pos+=3;
+	}
+      // Copy three-byte characters
+      else if (((unsigned char)word[pos]&0xe0)==0xe0)
+	{
+	  result+=word.substr(pos,3);
+	  pos+=2;
+	}
+      // else should be invalid in utf-8
       // Two-byte-character
-      if (((unsigned char)word[pos]&0xc0)==0xc0)
+      else if (((unsigned char)word[pos]&0xc0)==0xc0)
 	{
 	  switch((unsigned char)word[pos]) 
 	    {
@@ -53,6 +78,8 @@ string normalize(string word)
 		case 0x9f:
 		  result+="ss";
 		}
+	    default:
+	      result+=word.substr(pos,2);  
 	    }
 	  pos++;
 	}
@@ -108,31 +135,6 @@ string normalize(string word)
 		}
 	    }
 	}
-      // Copy three-byte characters
-      else if (((unsigned char)word[pos]&0xe0)==0xe0)
-	{
-	  result+=word.substr(pos,3);
-	  pos+=2;
-	}
-      // Copy four-byte characters
-      else if (((unsigned char)word[pos]&0xf0)==0xf0)
-	{
-	  result+=word.substr(pos,4);
-	  pos+=3;
-	}
-      // Copy five-byte characters
-      else if (((unsigned char)word[pos]&0xf8)==0xf8)
-	{
-	  result+=word.substr(pos,5);
-	  pos+=4;
-	}
-      // Copy six-byte characters
-      else if (((unsigned char)word[pos]&0xfc)==0xfc)
-	{
-	  result+=word.substr(pos,6);
-	  pos+=5;
-	}
-      // else should be invalid in utf-8
     }
   return result;
 }
