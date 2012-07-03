@@ -58,7 +58,9 @@ int main(int argc, char* argv[])
 	}
       if (have_filename)
 	{	  
-	  cout << "Filecount: " << file_count;
+#ifdef DEBUG
+	  cout << "Filecount: " << file_count << endl;
+#endif
 	  for(int ct=0; ct<file_count; ct++)
 	    {
 	      cout << "Adding File: " << files[ct].first << "\tLanguage: " << files[ct].second << "\t" << endl;

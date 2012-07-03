@@ -10,7 +10,7 @@
 #include <climits>
 #include "Util.hpp"
 
-#define TOP_FACTOR 10
+#define TOP_FACTOR 20
 
 using namespace std;
 
@@ -22,8 +22,14 @@ class LanguageRecognizer {
     set<string> *recognize(istream* in);
     void to_file(string filename);
     void to_stream(ostream *out);
+    void store();
+    void restore(string filename);
   private:
+    void trim(string language);
+    // Hash to recognize languages
     unordered_map<string,set<string>> knowsyourlanguage;
+    // Generate complete trigram frequency list
+    unordered_map<string,unordered_map<string,int>> trigram_freq;
 };
 
 void LanguageRecognizer::training(string language, string filename)
@@ -43,8 +49,8 @@ void LanguageRecognizer::training(string language, ifstream *in)
 #ifdef DEBUG
   cout << "Start training for " << language << endl;
 #endif
-  // Generate complete trigram frequency list
-  unordered_map<string,int> trigram_freq;
+  //  // Generate complete trigram frequency list
+  //  unordered_map<string,int> trigram_freq;
   while(!in->eof())
     {
       string word;
@@ -53,9 +59,9 @@ void LanguageRecognizer::training(string language, ifstream *in)
       if (nword.length()<3)
 	{
 	  if (nword.length()>0)
-	    trigram_freq[nword]++;
+	    trigram_freq[nword][language]++;
 #ifdef DEBUG
-	  cout << nword << endl;
+	  cout << nword << "\t" << trigram_freq[nword][language] << endl;
 #endif
 	}
       else
@@ -63,14 +69,18 @@ void LanguageRecognizer::training(string language, ifstream *in)
 	  for(unsigned int pos=0;pos<nword.length()-2;pos++)
 	    {
 	      string tri=nword.substr(pos,3);
-	      trigram_freq[tri]++;
+	      trigram_freq[tri][language]++;
 #ifdef DEBUG
-	      cout << tri << "\t" << trigram_freq[tri] << endl;
+	      cout << tri << "\t" << trigram_freq[tri][language] << endl;
 	      //	      cout << "Got " << trigram_freq.size() << " elements in trigram frequency list" << endl;  
 #endif
 	    }
 	}
     }
+  trim(language);
+}
+void LanguageRecognizer::trim(string language)
+{
   // Trim result list 
   size_t toplen=trigram_freq.size()*TOP_FACTOR/100;
 #ifdef DEBUG
@@ -80,7 +90,7 @@ void LanguageRecognizer::training(string language, ifstream *in)
   for ( auto it = trigram_freq.begin(); it != trigram_freq.end(); ++it )
     {
 #ifdef DEBUG
-      cout << "Iterator " << it->first << "\t" << it->second << endl;
+      cout << "Iterator " << it->first << "\t" << it->second[language] << endl;
 #endif
       int smallest_pos=0;
       int smallest=INT_MAX;
@@ -92,12 +102,12 @@ void LanguageRecognizer::training(string language, ifstream *in)
 	      smallest_pos=pos;
 	    }
 	}
-      if (top_list[smallest_pos].second<it->second)
+      if (top_list[smallest_pos].second<it->second[language])
 	{
 	  // Set trigram to new value
 	  top_list[smallest_pos].first=it->first;
 	  // Set count to new value
-	  top_list[smallest_pos].second=it->second;
+	  top_list[smallest_pos].second=it->second[language];
 #ifdef DEBUG
 	  cout << "Setting position " << smallest_pos << " to " << top_list[smallest_pos].first << " with count " << top_list[smallest_pos].second << endl;
 #endif
@@ -112,7 +122,6 @@ void LanguageRecognizer::training(string language, ifstream *in)
 #endif
       knowsyourlanguage[top_list[pos].first].insert(language);
     }
-
 }
 
 set<string> *LanguageRecognizer::recognize(string line)
@@ -205,14 +214,56 @@ void LanguageRecognizer::to_file(string filename)
 
 void LanguageRecognizer::to_stream(ostream *out)
 {
-  for ( auto wordit = knowsyourlanguage.begin(); wordit != knowsyourlanguage.end(); ++wordit )
+  for ( auto wordit = trigram_freq.begin(); wordit != trigram_freq.end(); ++wordit )
     {
       *out << wordit->first << "\t|";
       for (auto langit=wordit->second.begin(); langit != wordit->second.end(); ++langit )
 	{
-	  *out << *langit << "|";
+	  if (langit->first.length()>0 && langit->second>0)
+	    *out << langit->first << ":" << langit->second << "|";
 	}
       *out << endl;
+    }
+}
+
+void LanguageRecognizer::store()
+{
+  to_file("language.dat");
+}
+
+void LanguageRecognizer::restore(string filename)
+{
+  set<string> langlist;
+  ifstream in;
+  in.open(filename.c_str());
+  while(!in.eof())
+    {
+      string line;
+      getline(in,line);
+      stringstream linestream(line);
+      string trigram;
+      string langs;
+      getline(linestream,trigram,'\t');
+      getline(linestream,langs,'\t');
+      stringstream langstream(langs);
+      while (!langstream.eof())
+	{
+	  string langcount;
+	  getline(langstream,langcount,'|');
+	  stringstream langcountstream(langcount);
+	  string lang, count;
+	  getline(langcountstream,lang,':');
+	  getline(langcountstream,count,':');
+	  trigram_freq[trigram][lang]=atoi(count.c_str());
+	  //	  knowsyourlanguage[trigram].insert(lang);
+	  langlist.insert(lang);
+	}
+    }
+  in.close();
+  for (auto it=langlist.begin(); it!=langlist.end(); ++it)
+    {
+      if (it->length()>1)
+	trim(*it);
     }
 }
 #endif
