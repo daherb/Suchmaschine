@@ -43,30 +43,16 @@ int main(int argc, char *argv[])
 	  cout << commands[pos/2].first << "\t" << commands[pos/2].second << "\t" << endl;
 #endif
 	}
-
       // Check for restore index
       for (int pos=0;pos<command_count;pos++)
 	{
 	  if (commands[pos].first=="-restore")
 	    {
+	      cout << "INIT: Loading index from " << commands[pos].second << endl;
 	      have_index=true;
 	      ifstream infile;
 	      infile.open(commands[pos].second);
 	      index.restore_index(&infile);
-	    }
-	}
-      // Check for add files
-      for (int pos=0;pos<command_count;pos++)
-	{
-	  if (commands[pos].first=="-add")
-	    {
-	      // Say that we have an index
-	      have_index=true;
-	      // Insert file into Index
-	      index.insert(commands[pos].second);
-#ifdef DEBUG
-	      index.print();
-#endif
 	    }
 	}
       // Check for restore language data
@@ -74,15 +60,23 @@ int main(int argc, char *argv[])
 	{
 	  if (commands[pos].first=="-langfile")
 	    {
-	      if (!have_index)
-		{
-		  cerr << "No index to store additional language data" << endl;
-		  return -1;
-		}
-	      else
-		{
-		  index.lang_rec.restore(commands[pos].second);
-		}
+	      cout << "INIT: Loading language data from " << commands[pos].second << endl;
+	      index.lang_rec.restore(commands[pos].second);
+	    }
+	}
+      // Check for add files
+      for (int pos=0;pos<command_count;pos++)
+	{
+	  if (commands[pos].first=="-add")
+	    {
+	      cout << "INIT: Adding file " << commands[pos].second << endl;
+	      // Say that we have an index
+	      have_index=true;
+	      // Insert file into Index
+	      index.insert(commands[pos].second);
+#ifdef DEBUG
+	      index.print();
+#endif
 	    }
 	}
       // Check for queries
