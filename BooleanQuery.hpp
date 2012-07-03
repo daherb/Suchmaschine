@@ -143,8 +143,6 @@ void BooleanQuery::parse(string query)
 SimpleDocumentList *BooleanQuery::get_result()
 {
   // Do some ranking stuff: language, term count etc.
-  cerr << "Result size " << result->doclist.size() << endl;
-  cerr << "Result " << result << endl; 
   return result;
 }
 
