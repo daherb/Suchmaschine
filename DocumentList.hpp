@@ -6,6 +6,7 @@ template<class T>
 class DocumentList
 {
   public:
+    ~DocumentList() {}
   // Add document
     virtual void add(T element) {};
   // Remove document

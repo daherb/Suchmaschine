@@ -8,9 +8,10 @@
 class SimpleDocumentList : public DocumentList<int>
 {
   public:
+    ~SimpleDocumentList() {};
   // Add document id and term frequency
-  void add(int id);
-  void add(int id, int count);
+    void add(int id);
+    void add(int id, int count);
   // Remove document id
     void remove(int id);
   // Print list of document ids in the list

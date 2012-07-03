@@ -55,7 +55,11 @@ void SimpleIndex::insert(ifstream *in, string filename)
     lang=*(langs->begin());
   else
     lang="";
+  tempstream.close();
   doc_info.set(docid,"language",lang);
+#ifdef DEBUG
+  cerr << "Got " << lang << endl;
+#endif 
   // Store in the list of all doc ids
   doc_ids.add(docid);
   string word;
@@ -107,12 +111,12 @@ void SimpleIndex::restore_index(ifstream *infile)
     {
       string line;
       getline(*infile,line);
-      stringstream linestream(line,ios::in);
+      stringstream linestream(line);
       string scount,sdoclist,sword;
       getline(linestream,scount,'\t');
       getline(linestream,sdoclist,'\t');
       getline(linestream,sword);
-      inverted_index[sword].first+atoi(scount.c_str());
+      inverted_index[sword].first+=atoi(scount.c_str());
       stringstream docstream(sdoclist);
       while(!docstream.eof())
 	{
