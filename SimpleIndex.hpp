@@ -89,7 +89,7 @@ void SimpleIndex::to_stream(ostream *out)
   for ( auto it = inverted_index.begin(); it != inverted_index.end(); ++it )
     {
       *out << it->second.first << "\t";
-      it->second.second.to_stream(out);
+      it->second.second.to_stream(&doc_info,out);
       *out << "\t" << it->first << endl;
     }
 }
@@ -121,13 +121,30 @@ void SimpleIndex::restore_index(ifstream *infile)
       while(!docstream.eof())
 	{
 	  string sdocinfo;
-	  string sdocnum, sdoccount;
+	  string sdocnum, sdocfilename, sdoccount, sdoclang;
 	  getline(docstream,sdocinfo,'|');
 	  stringstream docinfostream(sdocinfo);
 	  getline(docinfostream,sdocnum,':');
-	  getline(docinfostream,sdoccount);
+	  getline(docinfostream,sdocfilename,':');
+	  getline(docinfostream,sdoccount,':');
+	  getline(docinfostream,sdoclang,':');
 	  if (sdocnum!=""&& sdoccount!="")
-	    inverted_index[sword].second.add(atoi(sdocnum.c_str()),atoi(sdoccount.c_str()));
+	    {
+	      int docnum=atoi(sdocnum.c_str());
+	      inverted_index[sword].second.add(docnum,atoi(sdoccount.c_str()));
+	      if (sdocfilename!="")
+		{
+		  doc_info.set(docnum,"filename",sdocfilename);
+		}
+	      else
+		{
+		  doc_info.set(docnum,"filename",string("Lost in translation"));
+		}
+	      if (sdoclang!="")
+		{
+		  doc_info.set(docnum,"language",sdoclang);
+		}
+	    }
 	}
     }
 }

@@ -4,6 +4,7 @@
 #include <set>
 #include <iostream>
 #include "DocumentList.hpp"
+#include "DocumentInfo.hpp"
 
 class SimpleDocumentList : public DocumentList<int>
 {
@@ -17,6 +18,7 @@ class SimpleDocumentList : public DocumentList<int>
   // Print list of document ids in the list
     void print();
     void to_stream(ostream *out);
+    void to_stream(DocumentInfo *doc_info,ostream *out);
   // All the neccessary set operations
     SimpleDocumentList *intersect(SimpleDocumentList dl);  
     SimpleDocumentList *unify(SimpleDocumentList dl); 
@@ -24,7 +26,7 @@ class SimpleDocumentList : public DocumentList<int>
   //#ifndef DEBUG
   //  private:
   //#endif
-  // The set of doc ids
+  // The list of doc ids and counts
     unordered_map<int,int> doclist;
 };
 
@@ -87,6 +89,16 @@ SimpleDocumentList *SimpleDocumentList::complement(SimpleDocumentList dl)
   return result; 
 }
 
+
+void SimpleDocumentList::to_stream(DocumentInfo *doc_info, ostream *out)
+{
+#ifdef DEBUG
+  cerr << doclist.size() << " Elements" << endl;
+#endif
+    for (auto it=this->doclist.begin() ; it != this->doclist.end(); it++ )
+      *out << "|" << it->first << ":" << doc_info->get(it->first,"filename") << ":" << it-> second << ":" << doc_info->get(it->first,"language");
+    *out << "|"; 
+}
 
 void SimpleDocumentList::to_stream(ostream *out)
 {
