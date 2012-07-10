@@ -1,5 +1,8 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall
+# For GCC 4.7
+#CFLAGS=-std=c++11 -Wall
+# For GCC 4.6
+CFLAGS=-std=c++0x -Wall
 ifdef CLANG
 CC=clang
 OUTFILE=main_clang
