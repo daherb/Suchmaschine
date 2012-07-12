@@ -26,7 +26,7 @@ class Index
     virtual DocumentList<T> *retrieve(string key) { return NULL; };
   protected:
   // Number of Documents in index
-    int doccount=0;
+    int doccount;
 };
 
 template<class T>

@@ -28,12 +28,13 @@ class BooleanQuery : public Query<int>
   // List of operators in query
     vector<string> op_list;
   // The resulting DocumentList
-    SimpleDocumentList *result=NULL;
+    SimpleDocumentList *result;
     SimpleIndex *inverted_index;
 };
 
 BooleanQuery::BooleanQuery(SimpleIndex *i)
 {
+  result=NULL;
   inverted_index=i;
 }
 

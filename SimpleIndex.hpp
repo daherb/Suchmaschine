@@ -19,6 +19,7 @@ class SimpleIndex: public Index<int>
   public:
     DocumentInfo doc_info;
     LanguageRecognizer lang_rec;
+    SimpleIndex();
   // Insert files either by name or by filestream
     void insert(string filename) {Index<int>::insert(filename); };
     void insert(ifstream *in, string filename);
@@ -43,6 +44,11 @@ class SimpleIndex: public Index<int>
     unordered_map<string,unordered_map<string,set<string>>> lemma_backward;
 };
 
+
+SimpleIndex::SimpleIndex()
+{
+  doccount=0;
+}
 
 void SimpleIndex::insert(ifstream *in, string filename)
 {
