@@ -2,6 +2,7 @@
 #include "SimpleIndex.hpp"
 #include "BooleanQuery.hpp"
 
+#define LEMMALEX_GERMAN string("lemmalex.deutsch")
 using namespace std;
 
 void usage()
@@ -31,6 +32,8 @@ int main(int argc, char *argv[])
       bool have_index=false;
       // Our index
       SimpleIndex index;
+      // Load our lemma lexicon
+      index.load_lemma_lex("deutsch",LEMMALEX_GERMAN);
       // Saves commands and parameters as pairs
       pair<string,string> commands[command_count];
       for(int pos=1;pos<argc;pos+=2)

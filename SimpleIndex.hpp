@@ -30,12 +30,17 @@ class SimpleIndex: public Index<int>
     void to_stream(ostream *out);
     void to_file(string filename);
     void restore_index(ifstream *infile);
+    void load_lemma_lex(string language, string filename);
   private:
   // Index as a unoredered map (quite like hash map) with strings as keys and 
   // pair of term count (int) and document list
     unordered_map<string,pair<int,SimpleDocumentList>> inverted_index;
   // List of all doc ids
     SimpleDocumentList doc_ids;
+  // First key language, second key full form, value lemma
+    unordered_map<string,unordered_map<string,string>> lemma_forward;
+  // First keylanguage, second key lemma, value set of all full forms
+    unordered_map<string,unordered_map<string,set<string>>> lemma_backward;
 };
 
 
@@ -69,8 +74,22 @@ void SimpleIndex::insert(ifstream *in, string filename)
     *in >> word;
     string nword=normalize(word);
     // Add to index
-    inverted_index[nword].first++;
-    inverted_index[nword].second.add(docid);
+    if (lemma_forward[lang][nword]!="")
+      {
+#ifdef DEBUG
+	cout << "Got lemma " << lemma_forward[lang][nword] << " for word " << nword << endl;
+#endif
+	for (auto it=lemma_backward[lang][lemma_forward[lang][nword]].begin(); it!=lemma_backward[lang][lemma_forward[lang][nword]].end(); ++it)
+	  {
+	    inverted_index[*it].first++;
+	    inverted_index[*it].second.add(docid);
+	  }
+      }
+    else
+      {
+	inverted_index[nword].first++;
+	inverted_index[nword].second.add(docid);
+      }
   }
 }
 
@@ -146,6 +165,24 @@ void SimpleIndex::restore_index(ifstream *infile)
 		}
 	    }
 	}
+    }
+}
+
+void SimpleIndex::load_lemma_lex(string language, string filename)
+{
+  cerr << "INIT: loading lemma lexicon " << filename << endl;
+  ifstream in;
+  in.open(filename.c_str());
+  while(!in.eof())
+    {
+      string full, lemma, nfull, nlemma;
+      in >> full;
+      in >> lemma;
+      nfull=normalize(full);
+      nlemma=normalize(lemma);
+      lemma_forward[language][nfull]=nlemma;
+      lemma_backward[language][nlemma].insert(nfull);
+      lemma_backward[language][nlemma].insert(nlemma);
     }
 }
 #endif
