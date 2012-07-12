@@ -78,6 +78,7 @@ string normalize(string word)
 		case 0x9f:
 		  result+="ss";
 		}
+	      break;
 	    default:
 	      result+=word.substr(pos,2);  
 	    }
