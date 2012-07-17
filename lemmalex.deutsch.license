@@ -1,0 +1,13 @@
+# Deutsche Morphologie-Daten, basierend auf Morphy
+# Format: CSV, tab-separiert, Vollform zu Grundform
+#
+# This data is available under the the following license:
+# Creative Commons Attribution-Share Alike 3.0 Unported,
+# http://creativecommons.org/licenses/by-sa/3.0/
+#
+# Source of this format: http://www.danielnaber.de/morphologie/
+# Original source: http://www.wolfganglezius.de/doku.php?id=public:cl:morphy
+#
+# Version 2011-07-10: erste Version in diesem Format
+# Version 2011-07-17: Weitere fehlende Lemmata der neuen Rechtschreibung hinzugefügt
+#
