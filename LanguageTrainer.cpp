@@ -1,4 +1,5 @@
 #include "Language.hpp"
+#include "Util.hpp"
 
 void usage()
 {
@@ -49,7 +50,7 @@ int main(int argc, char* argv[])
 	      // Save file name
 	      files[array_pos].first=tmp;
 	      // Save language
-	      files[array_pos].second=string(argv[pos+1]);
+	      files[array_pos].second=normalize(string(argv[pos+1]));
 #ifdef DEBUG
 	      cout << files[array_pos].first << "\t" << files[array_pos].second << "\t" << endl;
 #endif
