@@ -156,6 +156,7 @@ void SimpleIndex::restore_index(ifstream *infile)
 	  if (sdocnum!=""&& sdoccount!="")
 	    {
 	      int docnum=atoi(sdocnum.c_str());
+	      doc_ids.add(docnum);
 	      inverted_index[sword].second.add(docnum,atoi(sdoccount.c_str()));
 	      if (sdocfilename!="")
 		{
