@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SimpleIndex.hpp"
-#include "BooleanQuery.hpp"
+// #include "BooleanQuery.hpp"
+#include "SExpQuery.hpp"
 
 #define LEMMALEX_GERMAN string("lemmalex.deutsch")
 using namespace std;
@@ -11,7 +12,10 @@ void usage()
   cout << "Search engine to manage a file index and search it" << endl;
   cout << "Possible commands:" << endl;
   cout << "\t -add <Filename>: Adds a file to the Index" << endl;
-  cout << "\t -query <\"term1 [op1 term2 ...]\">: Query the Index" << endl;
+  cout << "\t -query <\"(s-Expression)\">: Query the Index with a s-Expression." << endl; 
+  cout << "\t\t s-Expression can consist of a single search term or an operator and operands." << endl;
+  cout << "\t\tPossible operators are and, or, not, meta. Operands can be search terms or s-Expressions." << endl;
+  cout << "\t\tmeta can be used to query meta informations like language." << endl;
   cout << "\t -store <Filename>: Store the internal index to a file" << endl;
   cout << "\t -restore <Filename>: Restore the internal index from a file" << endl;
   cout << "\t -langfile <Filename>: Restore the language data from a file" << endl;
@@ -96,7 +100,8 @@ int main(int argc, char *argv[])
 	      else
 		{
 		  // Execute query
-		  BooleanQuery q(&index);
+		  //BooleanQuery q(&index);
+		  SExpQuery q(&index);
 		  q.parse(commands[pos].second);
 		  // Get and print results
 		  SimpleDocumentList *r=q.get_result();
