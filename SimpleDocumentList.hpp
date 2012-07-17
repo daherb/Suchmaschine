@@ -1,10 +1,16 @@
 #ifndef SIMPLEDOCUMENTLIST_H
 #define SIMPLEDOCUMENTLIST_H
 
+#include <string>
 #include <set>
 #include <iostream>
+#include <unordered_map>
+
 #include "DocumentList.hpp"
-#include "DocumentInfo.hpp"
+
+using namespace std;
+
+class DocumentInfo;
 
 class SimpleDocumentList : public DocumentList<int>
 {
@@ -30,6 +36,8 @@ class SimpleDocumentList : public DocumentList<int>
     unordered_map<int,int> doclist;
 };
 
+
+#include "DocumentInfo.hpp"
 
 void SimpleDocumentList::add(int id)
 {
