@@ -82,9 +82,9 @@ void SimpleIndex::insert(ifstream *in, string filename)
     // Add to index
     if (lemma_forward[lang][nword]!="")
       {
-#ifdef DEBUG
+	//#ifdef DEBUG
 	cout << "Got lemma " << lemma_forward[lang][nword] << " for word " << nword << endl;
-#endif
+	//#endif
 	for (auto it=lemma_backward[lang][lemma_forward[lang][nword]].begin(); it!=lemma_backward[lang][lemma_forward[lang][nword]].end(); ++it)
 	  {
 	    inverted_index[*it].first++;
@@ -93,6 +93,9 @@ void SimpleIndex::insert(ifstream *in, string filename)
       }
     else
       {
+#ifdef DEBUG
+	cout << "Got no lemma for word " << nword << endl;
+#endif
 	inverted_index[nword].first++;
 	inverted_index[nword].second.add(docid);
       }
@@ -187,6 +190,9 @@ void SimpleIndex::load_lemma_lex(string language, string filename)
       in >> lemma;
       nfull=normalize(full);
       nlemma=normalize(lemma);
+#ifdef DEBUG
+      cout << "Loading lemma " << nlemma << " for word " << nfull << endl;
+#endif
       lemma_forward[language][nfull]=nlemma;
       lemma_backward[language][nlemma].insert(nfull);
       lemma_backward[language][nlemma].insert(nlemma);
