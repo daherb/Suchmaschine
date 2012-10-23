@@ -6,6 +6,107 @@
 #define LEMMALEX_GERMAN string("lemmalex.deutsch")
 using namespace std;
 
+class Searcher
+{
+  public:
+    Searcher();
+    // Restore the search index
+    void restore_index(string file);
+    // Load language data for language recognition
+    void load_language_data(string file);
+    // Add file to search index
+    void add_file(string file);
+    // Query the search index
+    int query(string q);
+    // Store the search index into a file
+    int store_index(string file);
+  private:
+    // Our index
+    SimpleIndex index;
+    // Check if index is present
+    bool have_index;
+};
+
+Searcher::Searcher()
+{
+  have_index=false;
+  // Load our lemma lexicon
+  index.load_lemma_lex("deutsch",LEMMALEX_GERMAN);
+}
+
+// Restore the search index
+void Searcher::restore_index(string file)
+{
+  have_index=true;
+  ifstream infile;
+  infile.open(file);
+  index.restore_index(&infile);
+}
+
+// Load language data for language recognition
+void Searcher::load_language_data(string file)
+{
+  index.lang_rec.restore(file);
+}
+
+// Add file to search index
+void Searcher::add_file(string file)
+{
+  // Say that we have an index
+  have_index=true;
+  // Insert file into Index
+  index.insert(file);
+#ifdef DEBUG
+  index.print();
+#endif
+}
+
+// Query the search index
+int Searcher::query(string qs)
+{
+  // No work to do if no Index present
+  if (! have_index)
+    {
+      cout << "No data to query" << endl;
+      return -1;
+    }
+  else
+    {
+      // Execute query
+      //BooleanQuery q(&index);
+      Query<int> *q=new SExpQuery(&index);
+      q->parse(qs);
+      // Get and print results
+      SimpleDocumentList *r=(SimpleDocumentList*)q->get_result();
+#ifdef DEBUG
+      cerr << "R size" << r->doclist.size() << endl;
+      cerr << "R " << r << endl; 
+#endif
+      cout << "Result for query \"" << qs << "\":" << endl;
+      //r->print();
+      for (auto it=r->doclist.begin(); it!=r->doclist.end();++it)
+	{
+	  cout << index.doc_info.get(it->first,"filename") << "\t" << it->second << "\t" << index.doc_info.get(it->first,"language") << endl;
+	}
+    }
+  return 1;
+}
+
+// Store the search index into a file
+int Searcher::store_index(string file)
+{
+  if (!have_index)
+    {
+      cout << "No data to store" << endl;
+      return -1;
+    }
+  else
+    {
+      index.to_file(file);
+      return 1;
+    }
+}
+
 void usage()
 {
   cout << "Searcher <Command_1> <Parameter_1> ... <Command_n> <Parameter_n>" << endl;
@@ -23,6 +124,7 @@ void usage()
 
 int main(int argc, char *argv[])
 {
+  Searcher search;
   // Check if at least on command and for each command exactly one parameter
   if (argc<3||argc%2!=1)
     {
@@ -32,12 +134,6 @@ int main(int argc, char *argv[])
     {
       // Number of commands given by command line
       int command_count=(argc-1)/2;
-      // Check if index is present
-      bool have_index=false;
-      // Our index
-      SimpleIndex index;
-      // Load our lemma lexicon
-      index.load_lemma_lex("deutsch",LEMMALEX_GERMAN);
       // Saves commands and parameters as pairs
       pair<string,string> commands[command_count];
       for(int pos=1;pos<argc;pos+=2)
@@ -56,10 +152,7 @@ int main(int argc, char *argv[])
 	  if (commands[pos].first=="-restore")
 	    {
 	      cout << "INIT: Loading index from " << commands[pos].second << endl;
-	      have_index=true;
-	      ifstream infile;
-	      infile.open(commands[pos].second);
-	      index.restore_index(&infile);
+	      search.restore_index(commands[pos].second);
 	    }
 	}
       // Check for restore language data
@@ -67,8 +160,8 @@ int main(int argc, char *argv[])
 	{
 	  if (commands[pos].first=="-langfile")
 	    {
-	      cout << "INIT: Loading language data from " << commands[pos].second << endl;
-	      index.lang_rec.restore(commands[pos].second);
+	      cout << "INIT: Loading language data from " <<  commands[pos].second << endl;
+	      search.load_language_data(commands[pos].second);
 	    }
 	}
       // Check for add files
@@ -77,13 +170,7 @@ int main(int argc, char *argv[])
 	  if (commands[pos].first=="-add")
 	    {
 	      cout << "INIT: Adding file " << commands[pos].second << endl;
-	      // Say that we have an index
-	      have_index=true;
-	      // Insert file into Index
-	      index.insert(commands[pos].second);
-#ifdef DEBUG
-	      index.print();
-#endif
+	      search.add_file(commands[pos].second);
 	    }
 	}
       // Check for queries
@@ -91,31 +178,7 @@ int main(int argc, char *argv[])
 	{
 	  if (commands[pos].first=="-query")
 	    {
-	      // No work to do if no Index present
-	      if (! have_index)
-		{
-		  cout << "No data to query" << endl;
-		  return -1;
-		}
-	      else
-		{
-		  // Execute query
-		  //BooleanQuery q(&index);
-		  SExpQuery q(&index);
-		  q.parse(commands[pos].second);
-		  // Get and print results
-		  SimpleDocumentList *r=q.get_result();
-#ifdef DEBUG
-		  cerr << "R size" << r->doclist.size() << endl;
-		  cerr << "R " << r << endl; 
-#endif
-		  cout << "Result for query \"" << commands[pos].second << "\":" << endl;
-		  //r->print();
-		  for (auto it=r->doclist.begin(); it!=r->doclist.end();++it)
-		    {
-		      cout << index.doc_info.get(it->first,"filename") << "\t" << it->second << "\t" << index.doc_info.get(it->first,"language") << endl;
-		    }
-		}
+	      search.query(commands[pos].second);
 	    }
 	}
       // Check for store index
@@ -123,15 +186,7 @@ int main(int argc, char *argv[])
 	{
 	  if (commands[pos].first=="-store")
 	    {
-	      if (!have_index)
-		{
-		  cout << "No data to store" << endl;
-		  return -1;
-		}
-	      else
-		{
-		  index.to_file(commands[pos].second);
-		}
+	      search.store_index(commands[pos].second);
 	    }
 	}
     }
