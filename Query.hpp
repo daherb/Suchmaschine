@@ -18,7 +18,7 @@ class Query
 {
   public: 
   // Parse the query
-    virtual void parse(string query, Index<T> i) {};
+    virtual void parse(string query) {};
   // Return the result
     DocumentList<T> *get_result() { return NULL; };
 };
