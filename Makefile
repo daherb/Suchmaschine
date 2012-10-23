@@ -15,5 +15,5 @@ endif
 all: trainer searcher
 searcher: Searcher.cpp *.hpp
 	$(CC) $(CFLAGS) -o Searcher Searcher.cpp
-trainer: LanguageTrainer.cpp Language.hpp
+trainer: LanguageTrainer.cpp LanguageRecognizer.hpp
 	$(CC) $(CFLAGS) -o Trainer LanguageTrainer.cpp
