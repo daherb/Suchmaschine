@@ -10,7 +10,7 @@
 #include "Index.hpp"
 #include "SimpleDocumentList.hpp"
 #include "DocumentInfo.hpp"
-#include "Language.hpp"
+#include "LanguageRecognizer.hpp"
 
 using namespace std;
 

@@ -1,9 +1,9 @@
-#include "Language.hpp"
+#include "LanguageRecognizer.hpp"
 #include "Util.hpp"
 
 void usage()
 {
-  cout << "train [-restore <Index-File> ] -store <Index-File> <File_1> <Language_1> ... <File_n> <Language_n>" << endl;
+  cout << "Trainer [-restore <Index-File> ] -store <Index-File> <File_1> <Language_1> ... <File_n> <Language_n>" << endl;
   cout << "Adds the files <File_1> ... <File_n> together with associated language <Language_1> ... <Language_n>"<< endl;
   cout << "into a data file to use it in the search process" << endl;
   cout << "Required command:" << endl;
