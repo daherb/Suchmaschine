@@ -1,3 +1,9 @@
+/**
+ * @file SimpleIndex.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
+
 #ifndef SIMPLEINDEX_H
 #define SIMPLEINDEX_H
 
@@ -14,25 +20,80 @@
 
 using namespace std;
 
+/**
+ * The SimpeIndex class is a concrete Implementation of the abstract class Index<int>, i.e. the implementation of an
+ * Search Index using DocumentList containing integers (Document IDs)
+ */
 class SimpleIndex: public Index<int>
 {
   public:
+  /**
+   * Object to store Meta-data for the Documents in the SimpleIndex .
+   */
     DocumentInfo doc_info;
+  /**
+   * Object to access the language recognising module.
+   */
     LanguageRecognizer lang_rec;
+  /**
+   * Basic constructor setting the Document counter to 0.
+   */
     SimpleIndex();
-  // Insert files either by name or by filestream
+ /**
+  * Function to add a file described by a filename to the SimpleIndex just calling
+  * the same function of parent class.
+  *
+  * @param filename Name of a file to add
+  */
     void insert(string filename) {Index<int>::insert(filename); };
+ /**
+  * Function to add a file by using a input stream to the SimpleIndex. 
+  *
+  * @param *in Pointer to a input stream associated to the file
+  * @param filename The filename of the file associated with the in stream
+  */
     void insert(ifstream *in, string filename);
-  // Get document list by key
+ /**
+  * Function to return the DocumentList<int> of documents containing the search term.
+  *
+  * @param key Search term to retrieve documents containing it
+  */
     DocumentList<int> *retrieve(string key);
-  // Get all doc ids in the index
+ /**
+  * Function to return the DocumentList<int> of all documents in the SimpleIndex
+  */
     DocumentList<int> *get_doc_ids();
+ /**
+  * Function to print the content of the SimpleIndex to Standard Out.
+  */
     void print();
+ /**
+  * Function to print the content of the SimpleIndex to an ostream.
+  *
+  * @param *out Pointer to a ostream to print the index to
+  */
     void to_stream(ostream *out);
+ /**
+  * Function to print the content of the SimpleIndex to a File determined by filename.
+  *
+  * @param filename File to print the SimpleIndex to
+  */
     void to_file(string filename);
+ /**
+  * Function to load a SimpleIndex from a File (for example to restore a printed SimpleIndex}
+  *
+  * @param *infile Pointer to a ifstream to read the SimpleIndex from
+  */
     void restore_index(ifstream *infile);
+ /**
+  * Function to load a Lexicon for Lemmatisation from a File.
+  *
+  * @param language The Language of the Lexicon
+  * @param filename The Lexicon File
+  */
     void load_lemma_lex(string language, string filename);
   private:
+    Util u;
   // Index as a unoredered map (quite like hash map) with strings as keys and 
   // pair of term count (int) and document list
     unordered_map<string,pair<int,SimpleDocumentList>> inverted_index;
@@ -78,7 +139,7 @@ void SimpleIndex::insert(ifstream *in, string filename)
   while(!in->eof())
   {
     *in >> word;
-    string nword=normalize(word);
+    string nword=u.normalize(word);
     // Add to index
     if (lemma_forward[lang][nword]!="")
       {
@@ -188,8 +249,8 @@ void SimpleIndex::load_lemma_lex(string language, string filename)
       string full, lemma, nfull, nlemma;
       in >> full;
       in >> lemma;
-      nfull=normalize(full);
-      nlemma=normalize(lemma);
+      nfull=u.normalize(full);
+      nlemma=u.normalize(lemma);
 #ifdef DEBUG
       cout << "Loading lemma " << nlemma << " for word " << nfull << endl;
 #endif

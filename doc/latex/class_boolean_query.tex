@@ -1,0 +1,103 @@
+\hypertarget{class_boolean_query}{\section{Boolean\-Query Class Reference}
+\label{class_boolean_query}\index{Boolean\-Query@{Boolean\-Query}}
+}
+
+
+{\ttfamily \#include $<$Boolean\-Query.\-hpp$>$}
+
+
+
+Inheritance diagram for Boolean\-Query\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_boolean_query__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Boolean\-Query\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_boolean_query__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_boolean_query_a576898eaed31cc7b31a66f826648a4da}{Boolean\-Query} (\hyperlink{class_simple_index}{Simple\-Index} $\ast$i)
+\item 
+void \hyperlink{class_boolean_query_ab6481d05cb528f55db63774b5d35d4b2}{parse} (string query)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_boolean_query_abdead8a7212547dcc8d745d11b678165}{get\-\_\-result} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_boolean_query}{Boolean\-Query} class is the Implementation of a basic \hyperlink{class_query}{Query$<$int$>$} Parser. A \hyperlink{class_boolean_query}{Boolean\-Query} String consists of Document Terms connected by the boolean Operators A\-N\-D, O\-R and N\-O\-T. The \hyperlink{class_query}{Query} String is evaluated from left to right. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_boolean_query_a576898eaed31cc7b31a66f826648a4da}{\index{Boolean\-Query@{Boolean\-Query}!Boolean\-Query@{Boolean\-Query}}
+\index{Boolean\-Query@{Boolean\-Query}!BooleanQuery@{Boolean\-Query}}
+\subsubsection[{Boolean\-Query}]{\setlength{\rightskip}{0pt plus 5cm}Boolean\-Query\-::\-Boolean\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\-Index} $\ast$}]{i}
+\end{DoxyParamCaption}
+)}}\label{class_boolean_query_a576898eaed31cc7b31a66f826648a4da}
+Constructor to incorporate an \hyperlink{class_simple_index}{Simple\-Index} for the Evaluation and to set the result to N\-U\-L\-L
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$i} & Pointer to the \hyperlink{class_simple_index}{Simple\-Index} to be used for Evaluation of the \hyperlink{class_boolean_query}{Boolean\-Query} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_boolean_query_abdead8a7212547dcc8d745d11b678165}{\index{Boolean\-Query@{Boolean\-Query}!get\-\_\-result@{get\-\_\-result}}
+\index{get\-\_\-result@{get\-\_\-result}!BooleanQuery@{Boolean\-Query}}
+\subsubsection[{get\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ Boolean\-Query\-::get\-\_\-result (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_boolean_query_abdead8a7212547dcc8d745d11b678165}
+Funtion to return the resulting \hyperlink{class_simple_document_list}{Simple\-Document\-List}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} containing the documents selected by a previous query 
+\end{DoxyReturn}
+\hypertarget{class_boolean_query_ab6481d05cb528f55db63774b5d35d4b2}{\index{Boolean\-Query@{Boolean\-Query}!parse@{parse}}
+\index{parse@{parse}!BooleanQuery@{Boolean\-Query}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}void Boolean\-Query\-::parse (
+\begin{DoxyParamCaption}
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_boolean_query_ab6481d05cb528f55db63774b5d35d4b2}
+Function to parse a \hyperlink{class_query}{Query} and store the resulting \hyperlink{class_simple_document_list}{Simple\-Document\-List} internally. The \hyperlink{class_query}{Query} is evaluated from left to right.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The \hyperlink{class_query}{Query} string to be evaluated. Consisting of search terms and the boolean Operators A\-N\-D, O\-R and N\-O\-T \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_query_ac3939e4f331ca927c6215db0f7cfe740}{Query$<$ int $>$}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_boolean_query_ab6481d05cb528f55db63774b5d35d4b2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_boolean_query_8hpp}{Boolean\-Query.\-hpp}\end{DoxyCompactItemize}

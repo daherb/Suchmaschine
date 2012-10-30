@@ -1,0 +1,84 @@
+\hypertarget{class_query}{\section{Query$<$ T $>$ Class Template Reference}
+\label{class_query}\index{Query$<$ T $>$@{Query$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Query.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_query_ac3939e4f331ca927c6215db0f7cfe740}{parse} (string query)
+\item 
+\hyperlink{class_document_list}{Document\-List}$<$ T $>$ $\ast$ \hyperlink{class_query_a3f8e3301659306444c7d7fcfb2ea8796}{get\-\_\-result} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Query$<$ T $>$}
+
+The \hyperlink{class_query}{Query} class is the abstract class to define the basic funcitonality of a query 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & only used to determine the right type of \hyperlink{class_document_list}{Document\-List} \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_query_a3f8e3301659306444c7d7fcfb2ea8796}{\index{Query@{Query}!get\-\_\-result@{get\-\_\-result}}
+\index{get\-\_\-result@{get\-\_\-result}!Query@{Query}}
+\subsubsection[{get\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Document\-List}$<$T$>$$\ast$ {\bf Query}$<$ T $>$\-::get\-\_\-result (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_query_a3f8e3301659306444c7d7fcfb2ea8796}
+Function to return the Result of a previously executed \hyperlink{class_query}{Query}. Needs to be overridden in concrete Implementations of an \hyperlink{class_query}{Query}.
+
+\begin{DoxyReturn}{Returns}
+Pointer to a \hyperlink{class_document_list}{Document\-List} representing the Result of the \hyperlink{class_query}{Query} 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_query_a3f8e3301659306444c7d7fcfb2ea8796_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_query_ac3939e4f331ca927c6215db0f7cfe740}{\index{Query@{Query}!parse@{parse}}
+\index{parse@{parse}!Query@{Query}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf Query}$<$ T $>$\-::parse (
+\begin{DoxyParamCaption}
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_query_ac3939e4f331ca927c6215db0f7cfe740}
+Function to parse and execute a query stored in a string. Needs to be overridden in concrete Implementations of an \hyperlink{class_query}{Query}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The \hyperlink{class_query}{Query} String \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_s_exp_query_a38bc807bf8216b6a9530128280cf709f}{S\-Exp\-Query}, and \hyperlink{class_boolean_query_ab6481d05cb528f55db63774b5d35d4b2}{Boolean\-Query}.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_query_ac3939e4f331ca927c6215db0f7cfe740_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_query_8hpp}{Query.\-hpp}\end{DoxyCompactItemize}

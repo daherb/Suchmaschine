@@ -1,0 +1,128 @@
+\hypertarget{class_document_list}{\section{Document\-List$<$ T $>$ Class Template Reference}
+\label{class_document_list}\index{Document\-List$<$ T $>$@{Document\-List$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Document\-List.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_document_list_affbcf6455ab7095c14438eacd31858cb}{add} (T element)
+\item 
+virtual void \hyperlink{class_document_list_ab8f4e7a75701cee8cb0d699142040cbf}{remove} (T element)
+\item 
+virtual \hyperlink{class_document_list}{Document\-List}$<$ T $>$ $\ast$ \hyperlink{class_document_list_a4fef60658bbad8edb2faa1430a96c6b0}{intersect} (\hyperlink{class_document_list}{Document\-List}$<$ T $>$ dl)
+\item 
+virtual \hyperlink{class_document_list}{Document\-List}$<$ T $>$ $\ast$ \hyperlink{class_document_list_af870e03a60d7a46500576299857786c5}{unify} (\hyperlink{class_document_list}{Document\-List}$<$ T $>$ dl)
+\item 
+virtual \hyperlink{class_document_list}{Document\-List}$<$ T $>$ $\ast$ \hyperlink{class_document_list_a422ef895e470ea8b96688abc6c248b3c}{complement} (\hyperlink{class_document_list}{Document\-List}$<$ T $>$ dl)
+\item 
+virtual void \hyperlink{class_document_list_a4b813a82cebdad5852e431281e270579}{print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Document\-List$<$ T $>$}
+
+The \hyperlink{class_document_list}{Document\-List} class is the abstract class to define the basic funcitonality of a document list. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Datatype to represent a Document in the \hyperlink{class_document_list}{Document\-List} \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_document_list_affbcf6455ab7095c14438eacd31858cb}{\index{Document\-List@{Document\-List}!add@{add}}
+\index{add@{add}!DocumentList@{Document\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf Document\-List}$<$ T $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{T}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_affbcf6455ab7095c14438eacd31858cb}
+Function to add a Document to the \hyperlink{class_document_list}{Document\-List}. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & The Document to add \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_simple_document_list_ac7f79b25800a962564204a848faa1699}{Simple\-Document\-List}.
+
+\hypertarget{class_document_list_a422ef895e470ea8b96688abc6c248b3c}{\index{Document\-List@{Document\-List}!complement@{complement}}
+\index{complement@{complement}!DocumentList@{Document\-List}}
+\subsubsection[{complement}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual {\bf Document\-List}$<$T$>$$\ast$ {\bf Document\-List}$<$ T $>$\-::complement (
+\begin{DoxyParamCaption}
+\item[{{\bf Document\-List}$<$ T $>$}]{dl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_a422ef895e470ea8b96688abc6c248b3c}
+Function to complement this \hyperlink{class_document_list}{Document\-List} according to a second one. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & The \hyperlink{class_document_list}{Document\-List} to complement with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the complemented \hyperlink{class_document_list}{Document\-List} 
+\end{DoxyReturn}
+\hypertarget{class_document_list_a4fef60658bbad8edb2faa1430a96c6b0}{\index{Document\-List@{Document\-List}!intersect@{intersect}}
+\index{intersect@{intersect}!DocumentList@{Document\-List}}
+\subsubsection[{intersect}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual {\bf Document\-List}$<$T$>$$\ast$ {\bf Document\-List}$<$ T $>$\-::intersect (
+\begin{DoxyParamCaption}
+\item[{{\bf Document\-List}$<$ T $>$}]{dl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_a4fef60658bbad8edb2faa1430a96c6b0}
+Function to intersect this \hyperlink{class_document_list}{Document\-List} with a second one. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}. 
+\begin{DoxyParams}{Parameters}
+{\em dl} & The \hyperlink{class_document_list}{Document\-List} to intersect with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the intersected \hyperlink{class_document_list}{Document\-List} 
+\end{DoxyReturn}
+\hypertarget{class_document_list_a4b813a82cebdad5852e431281e270579}{\index{Document\-List@{Document\-List}!print@{print}}
+\index{print@{print}!DocumentList@{Document\-List}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf Document\-List}$<$ T $>$\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_a4b813a82cebdad5852e431281e270579}
+Function to print the content of this \hyperlink{class_document_list}{Document\-List}. Needs to be overridden in concrete Implementations of an \hyperlink{class_document_list}{Document\-List}. 
+
+Reimplemented in \hyperlink{class_simple_document_list_a751b699421e4e521703ff4caa7777444}{Simple\-Document\-List}.
+
+\hypertarget{class_document_list_ab8f4e7a75701cee8cb0d699142040cbf}{\index{Document\-List@{Document\-List}!remove@{remove}}
+\index{remove@{remove}!DocumentList@{Document\-List}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf Document\-List}$<$ T $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{T}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_ab8f4e7a75701cee8cb0d699142040cbf}
+Function to remove a Document from the \hyperlink{class_document_list}{Document\-List}. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & The Document to remove \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_simple_document_list_ad4d35ae4892155bc9dca9c528412c261}{Simple\-Document\-List}.
+
+\hypertarget{class_document_list_af870e03a60d7a46500576299857786c5}{\index{Document\-List@{Document\-List}!unify@{unify}}
+\index{unify@{unify}!DocumentList@{Document\-List}}
+\subsubsection[{unify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual {\bf Document\-List}$<$T$>$$\ast$ {\bf Document\-List}$<$ T $>$\-::unify (
+\begin{DoxyParamCaption}
+\item[{{\bf Document\-List}$<$ T $>$}]{dl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_document_list_af870e03a60d7a46500576299857786c5}
+Function to unify this \hyperlink{class_document_list}{Document\-List} with a second one. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}. 
+\begin{DoxyParams}{Parameters}
+{\em dl} & The \hyperlink{class_document_list}{Document\-List} to unify with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the unified \hyperlink{class_document_list}{Document\-List} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_document_list_8hpp}{Document\-List.\-hpp}\end{DoxyCompactItemize}

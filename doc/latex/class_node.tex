@@ -1,0 +1,110 @@
+\hypertarget{class_node}{\section{Node Class Reference}
+\label{class_node}\index{Node@{Node}}
+}
+
+
+{\ttfamily \#include $<$S\-Exp\-Query.\-hpp$>$}
+
+
+
+Collaboration diagram for Node\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_node__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node_a8364d212066287c22cc5e27b8f8fe730}{Node} (\hyperlink{class_node}{Node} $\ast$p)
+\item 
+\hyperlink{class_node_a5c7d9a8b91f994ab038e294833187523}{Node} (\hyperlink{class_node}{Node} $\ast$p, string v)
+\item 
+void \hyperlink{class_node_a3f7b42f5146c6450795964929f7f8f56}{print\-Tree} (string in)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node}{Node} $\ast$ \hyperlink{class_node_ad8184598cdea70e4bbdfd76f2b0f9e85}{parent}
+\item 
+vector$<$ \hyperlink{class_node}{Node} $\ast$ $>$ \hyperlink{class_node_a4403c570a373595bc3f82a8ca0bd2e61}{children}
+\item 
+string \hyperlink{class_node_afbfe6bbcc5e6d53bb23ff4c29c178596}{value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_node}{Node} class is the foundation of a tree 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_node_a8364d212066287c22cc5e27b8f8fe730}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_node_a8364d212066287c22cc5e27b8f8fe730}
+Constructor only setting the Parent \hyperlink{class_node}{Node} 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p} & Pointer to the Parent \hyperlink{class_node}{Node} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_node_a5c7d9a8b91f994ab038e294833187523}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{p, }
+\item[{string}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_node_a5c7d9a8b91f994ab038e294833187523}
+Constructor setting the Parent \hyperlink{class_node}{Node} and \hyperlink{class_node}{Node} Value 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p} & Pointer to the Parent \hyperlink{class_node}{Node} \\
+\hline
+{\em v} & Value to be stored in \hyperlink{class_node}{Node} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_node_a3f7b42f5146c6450795964929f7f8f56}{\index{Node@{Node}!print\-Tree@{print\-Tree}}
+\index{print\-Tree@{print\-Tree}!Node@{Node}}
+\subsubsection[{print\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}void Node\-::print\-Tree (
+\begin{DoxyParamCaption}
+\item[{string}]{in}
+\end{DoxyParamCaption}
+)}}\label{class_node_a3f7b42f5146c6450795964929f7f8f56}
+Function to print the whole Subtree of the \hyperlink{class_node}{Node} 
+\begin{DoxyParams}{Parameters}
+{\em in} & String used for Indentation \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_node_a3f7b42f5146c6450795964929f7f8f56_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_node_a4403c570a373595bc3f82a8ca0bd2e61}{\index{Node@{Node}!children@{children}}
+\index{children@{children}!Node@{Node}}
+\subsubsection[{children}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Node} $\ast$$>$ Node\-::children}}\label{class_node_a4403c570a373595bc3f82a8ca0bd2e61}
+List of Pointers to Child Nodes \hypertarget{class_node_ad8184598cdea70e4bbdfd76f2b0f9e85}{\index{Node@{Node}!parent@{parent}}
+\index{parent@{parent}!Node@{Node}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ Node\-::parent}}\label{class_node_ad8184598cdea70e4bbdfd76f2b0f9e85}
+Pointer to the Parent \hyperlink{class_node}{Node} \hypertarget{class_node_afbfe6bbcc5e6d53bb23ff4c29c178596}{\index{Node@{Node}!value@{value}}
+\index{value@{value}!Node@{Node}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}string Node\-::value}}\label{class_node_afbfe6bbcc5e6d53bb23ff4c29c178596}
+A Value stored in the \hyperlink{class_node}{Node} 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_s_exp_query_8hpp}{S\-Exp\-Query.\-hpp}\end{DoxyCompactItemize}

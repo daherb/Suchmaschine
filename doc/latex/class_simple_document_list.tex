@@ -1,0 +1,254 @@
+\hypertarget{class_simple_document_list}{\section{Simple\-Document\-List Class Reference}
+\label{class_simple_document_list}\index{Simple\-Document\-List@{Simple\-Document\-List}}
+}
+
+
+{\ttfamily \#include $<$Simple\-Document\-List.\-hpp$>$}
+
+
+
+Inheritance diagram for Simple\-Document\-List\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_simple_document_list__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Simple\-Document\-List\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{class_simple_document_list__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_simple_document_list_ac7f79b25800a962564204a848faa1699}{add} (int id)
+\item 
+void \hyperlink{class_simple_document_list_aa5620d3d5d6de675788d38031c206c65}{add} (int id, int count)
+\item 
+void \hyperlink{class_simple_document_list_ad4d35ae4892155bc9dca9c528412c261}{remove} (int id)
+\item 
+void \hyperlink{class_simple_document_list_a751b699421e4e521703ff4caa7777444}{print} ()
+\item 
+void \hyperlink{class_simple_document_list_a761086b43ea9cf8e3a884377238be7f8}{to\-\_\-stream} (ostream $\ast$out)
+\item 
+void \hyperlink{class_simple_document_list_a45659deca249881d873cd9cb7826e6a9}{to\-\_\-stream} (\hyperlink{class_document_info}{Document\-Info} $\ast$doc\-\_\-info, ostream $\ast$out)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_simple_document_list_a6e20bc294b6c25a11669e058b60b5a23}{intersect} (\hyperlink{class_simple_document_list}{Simple\-Document\-List} dl)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_simple_document_list_a70e5a7941e0f8d19b2c80024303c7ddf}{unify} (\hyperlink{class_simple_document_list}{Simple\-Document\-List} dl)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_simple_document_list_a3766bef53e75da6d7da14dbd9ccd6aff}{complement} (\hyperlink{class_simple_document_list}{Simple\-Document\-List} dl)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_simple_document_list_aed1123589c05a94eba961aae615096df}{unordered\-\_\-map$<$ int, int $>$ {\bfseries doclist}}\label{class_simple_document_list_aed1123589c05a94eba961aae615096df}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_simple_document_list}{Simple\-Document\-List} class is the Implementation of a \hyperlink{class_document_list}{Document\-List$<$int$>$}, i.\-e. a \hyperlink{class_document_list}{Document\-List} where Documents are represented as Integers 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_simple_document_list_ac7f79b25800a962564204a848faa1699}{\index{Simple\-Document\-List@{Simple\-Document\-List}!add@{add}}
+\index{add@{add}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::add (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_document_list_ac7f79b25800a962564204a848faa1699}
+Function to add a Document to the \hyperlink{class_simple_document_list}{Simple\-Document\-List} with count 1
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Document I\-D of the Document to add \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_document_list_affbcf6455ab7095c14438eacd31858cb}{Document\-List$<$ int $>$}.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_simple_document_list_ac7f79b25800a962564204a848faa1699_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_simple_document_list_aa5620d3d5d6de675788d38031c206c65}{\index{Simple\-Document\-List@{Simple\-Document\-List}!add@{add}}
+\index{add@{add}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::add (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_aa5620d3d5d6de675788d38031c206c65}
+Function to add a Document to the \hyperlink{class_simple_document_list}{Simple\-Document\-List} with a specific count
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Document I\-D of the Document to add \\
+\hline
+{\em count} & Document Count \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_document_list_a3766bef53e75da6d7da14dbd9ccd6aff}{\index{Simple\-Document\-List@{Simple\-Document\-List}!complement@{complement}}
+\index{complement@{complement}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{complement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ Simple\-Document\-List\-::complement (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\-Document\-List}}]{dl}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_a3766bef53e75da6d7da14dbd9ccd6aff}
+Function to complement this \hyperlink{class_document_list}{Document\-List} according to a second one. 
+\begin{DoxyParams}{Parameters}
+{\em element} & The \hyperlink{class_simple_document_list}{Simple\-Document\-List} to complement with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the complemented \hyperlink{class_simple_document_list}{Simple\-Document\-List} 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_simple_document_list_a3766bef53e75da6d7da14dbd9ccd6aff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_simple_document_list_a6e20bc294b6c25a11669e058b60b5a23}{\index{Simple\-Document\-List@{Simple\-Document\-List}!intersect@{intersect}}
+\index{intersect@{intersect}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{intersect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ Simple\-Document\-List\-::intersect (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\-Document\-List}}]{dl}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_a6e20bc294b6c25a11669e058b60b5a23}
+Function to intersect this \hyperlink{class_document_list}{Document\-List} with a second one. 
+\begin{DoxyParams}{Parameters}
+{\em dl} & The \hyperlink{class_document_list}{Document\-List} to intersect with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the intersected \hyperlink{class_document_list}{Document\-List} 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_simple_document_list_a6e20bc294b6c25a11669e058b60b5a23_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_simple_document_list_a751b699421e4e521703ff4caa7777444}{\index{Simple\-Document\-List@{Simple\-Document\-List}!print@{print}}
+\index{print@{print}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_document_list_a751b699421e4e521703ff4caa7777444}
+Function to print the content of this \hyperlink{class_simple_document_list}{Simple\-Document\-List} to Standard Out 
+
+Reimplemented from \hyperlink{class_document_list_a4b813a82cebdad5852e431281e270579}{Document\-List$<$ int $>$}.
+
+\hypertarget{class_simple_document_list_ad4d35ae4892155bc9dca9c528412c261}{\index{Simple\-Document\-List@{Simple\-Document\-List}!remove@{remove}}
+\index{remove@{remove}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::remove (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_document_list_ad4d35ae4892155bc9dca9c528412c261}
+Function to remove a Document from the \hyperlink{class_simple_document_list}{Simple\-Document\-List}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Document I\-D of the Document to add \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_document_list_ab8f4e7a75701cee8cb0d699142040cbf}{Document\-List$<$ int $>$}.
+
+\hypertarget{class_simple_document_list_a761086b43ea9cf8e3a884377238be7f8}{\index{Simple\-Document\-List@{Simple\-Document\-List}!to\-\_\-stream@{to\-\_\-stream}}
+\index{to\-\_\-stream@{to\-\_\-stream}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{to\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::to\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{ostream $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_a761086b43ea9cf8e3a884377238be7f8}
+Function to print the content of this \hyperlink{class_simple_document_list}{Simple\-Document\-List} to a stream 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$out} & Pointer to an ostream to print to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_document_list_a45659deca249881d873cd9cb7826e6a9}{\index{Simple\-Document\-List@{Simple\-Document\-List}!to\-\_\-stream@{to\-\_\-stream}}
+\index{to\-\_\-stream@{to\-\_\-stream}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{to\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Document\-List\-::to\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{{\bf Document\-Info} $\ast$}]{doc\-\_\-info, }
+\item[{ostream $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_a45659deca249881d873cd9cb7826e6a9}
+Function to print the content of this \hyperlink{class_simple_document_list}{Simple\-Document\-List} to a stream with the additional data from a \hyperlink{class_document_info}{Document\-Info} Object. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$doc\-\_\-info} & Pointer to a \hyperlink{class_document_info}{Document\-Info} Object providing additional Information \\
+\hline
+{\em $\ast$out} & Pointer to an ostream to print to \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_simple_document_list_a45659deca249881d873cd9cb7826e6a9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_simple_document_list_a70e5a7941e0f8d19b2c80024303c7ddf}{\index{Simple\-Document\-List@{Simple\-Document\-List}!unify@{unify}}
+\index{unify@{unify}!SimpleDocumentList@{Simple\-Document\-List}}
+\subsubsection[{unify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ Simple\-Document\-List\-::unify (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\-Document\-List}}]{dl}
+\end{DoxyParamCaption}
+)}}\label{class_simple_document_list_a70e5a7941e0f8d19b2c80024303c7ddf}
+Function to unify this \hyperlink{class_document_list}{Document\-List} with a second one. 
+\begin{DoxyParams}{Parameters}
+{\em dl} & The \hyperlink{class_simple_document_list}{Simple\-Document\-List} to unify with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the unified \hyperlink{class_simple_document_list}{Simple\-Document\-List} 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_simple_document_list_a70e5a7941e0f8d19b2c80024303c7ddf_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_simple_document_list_8hpp}{Simple\-Document\-List.\-hpp}\end{DoxyCompactItemize}

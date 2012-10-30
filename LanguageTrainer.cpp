@@ -1,3 +1,12 @@
+/**
+ * @file LanguageTrainer.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ * Trainer is a small program to train the Language Model needed for Language Idenfification
+ */
+
 #include "LanguageRecognizer.hpp"
 #include "Util.hpp"
 
@@ -21,6 +30,7 @@ int main(int argc, char* argv[])
     }
   else
     {
+      Util u;
       // Language Recognizer
       LanguageRecognizer lang_rec;
       // Checks if filename to store is given
@@ -50,7 +60,7 @@ int main(int argc, char* argv[])
 	      // Save file name
 	      files[array_pos].first=tmp;
 	      // Save language
-	      files[array_pos].second=normalize(string(argv[pos+1]));
+	      files[array_pos].second=u.normalize(string(argv[pos+1]));
 #ifdef DEBUG
 	      cout << files[array_pos].first << "\t" << files[array_pos].second << "\t" << endl;
 #endif

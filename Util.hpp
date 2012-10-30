@@ -1,3 +1,8 @@
+/**
+ * @file Util.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
 #ifndef UTIL_H
 #define UTIL_H
 
@@ -6,9 +11,30 @@
 #include <iostream>
 
 using namespace std;
+/**
+ * The Index class is a helper class providing some functions used quite often.
+ */
+class Util
+{
+  public:
+ /**
+  * Function to normalize strings, i.e. convert to a unified form by removing and changing some characters in it
+  *
+  * @param word String to convert to a normalized Form
+  * @return Normalized String
+  */
+    string normalize(string word);
+ /**
+  * Function to divide a string at the position of spaces
+  *
+  * @param line String to split
+  * @return List of Parts of the line
+  */
+    vector<string> *tokenize(string line);
+};
 
 // Normalize a word (still a lot of work to do)
-string normalize(string word)
+string Util::normalize(string word)
 {
   string result("");
   for(unsigned int pos=0; pos<word.length();pos++)
@@ -206,7 +232,7 @@ string normalize(string word)
 }
 
 // Split string at spaces and eliminate multiple spaces
-vector<string> *tokenize(string line)
+vector<string> *Util::tokenize(string line)
 {
   // Insert space to ensure termination
   line+=' ';

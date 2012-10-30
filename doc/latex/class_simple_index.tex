@@ -1,0 +1,223 @@
+\hypertarget{class_simple_index}{\section{Simple\-Index Class Reference}
+\label{class_simple_index}\index{Simple\-Index@{Simple\-Index}}
+}
+
+
+{\ttfamily \#include $<$Simple\-Index.\-hpp$>$}
+
+
+
+Inheritance diagram for Simple\-Index\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{class_simple_index__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Simple\-Index\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_simple_index__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_simple_index_a568167e1f7b626c221e2af34382fde08}{Simple\-Index} ()
+\item 
+void \hyperlink{class_simple_index_a3543f459591b58d8bbc66bbea185f56a}{insert} (string filename)
+\item 
+void \hyperlink{class_simple_index_ac4dd08c90e6d0301e9c904103404438a}{insert} (ifstream $\ast$in, string filename)
+\item 
+\hyperlink{class_document_list}{Document\-List}$<$ int $>$ $\ast$ \hyperlink{class_simple_index_a7e05f794bbfadad54b0207b2c3ad1de1}{retrieve} (string key)
+\item 
+\hyperlink{class_document_list}{Document\-List}$<$ int $>$ $\ast$ \hyperlink{class_simple_index_ab2be82d650d6a46133c69f8ba75f3b64}{get\-\_\-doc\-\_\-ids} ()
+\item 
+void \hyperlink{class_simple_index_a493941cf4eb8f3d149a5a521eb7fe3dd}{print} ()
+\item 
+void \hyperlink{class_simple_index_a31fa43913eed477552159b134a328463}{to\-\_\-stream} (ostream $\ast$out)
+\item 
+void \hyperlink{class_simple_index_a2c0c087962efbf6b4cb9d38d1043d074}{to\-\_\-file} (string filename)
+\item 
+void \hyperlink{class_simple_index_a553b9446f1164b1bd72f4196d864153a}{restore\-\_\-index} (ifstream $\ast$infile)
+\item 
+void \hyperlink{class_simple_index_af6fae809369d2ae265f60c4a678e0a31}{load\-\_\-lemma\-\_\-lex} (string language, string filename)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_document_info}{Document\-Info} \hyperlink{class_simple_index_a7d3e80897ed6c69cdd4d61297cde527a}{doc\-\_\-info}
+\item 
+\hyperlink{class_language_recognizer}{Language\-Recognizer} \hyperlink{class_simple_index_aac925e5941373e3a2d711b3282618790}{lang\-\_\-rec}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The Simpe\-Index class is a concrete Implementation of the abstract class \hyperlink{class_index}{Index$<$int$>$}, i.\-e. the implementation of an Search \hyperlink{class_index}{Index} using \hyperlink{class_document_list}{Document\-List} containing integers (Document I\-Ds) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_simple_index_a568167e1f7b626c221e2af34382fde08}{\index{Simple\-Index@{Simple\-Index}!Simple\-Index@{Simple\-Index}}
+\index{Simple\-Index@{Simple\-Index}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{Simple\-Index}]{\setlength{\rightskip}{0pt plus 5cm}Simple\-Index\-::\-Simple\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_a568167e1f7b626c221e2af34382fde08}
+Basic constructor setting the Document counter to 0. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_simple_index_ab2be82d650d6a46133c69f8ba75f3b64}{\index{Simple\-Index@{Simple\-Index}!get\-\_\-doc\-\_\-ids@{get\-\_\-doc\-\_\-ids}}
+\index{get\-\_\-doc\-\_\-ids@{get\-\_\-doc\-\_\-ids}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{get\-\_\-doc\-\_\-ids}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Document\-List}$<$ int $>$ $\ast$ Simple\-Index\-::get\-\_\-doc\-\_\-ids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_ab2be82d650d6a46133c69f8ba75f3b64}
+Function to return the \hyperlink{class_document_list}{Document\-List$<$int$>$} of all documents in the \hyperlink{class_simple_index}{Simple\-Index} \hypertarget{class_simple_index_a3543f459591b58d8bbc66bbea185f56a}{\index{Simple\-Index@{Simple\-Index}!insert@{insert}}
+\index{insert@{insert}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::insert (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_simple_index_a3543f459591b58d8bbc66bbea185f56a}
+Function to add a file described by a filename to the \hyperlink{class_simple_index}{Simple\-Index} just calling the same function of parent class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of a file to add \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{class_simple_index_a3543f459591b58d8bbc66bbea185f56a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_simple_index_ac4dd08c90e6d0301e9c904103404438a}{\index{Simple\-Index@{Simple\-Index}!insert@{insert}}
+\index{insert@{insert}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::insert (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{in, }
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_index_ac4dd08c90e6d0301e9c904103404438a}
+Function to add a file by using a input stream to the \hyperlink{class_simple_index}{Simple\-Index}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$in} & Pointer to a input stream associated to the file \\
+\hline
+{\em filename} & The filename of the file associated with the in stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_index_a95b7be97caee4aacf0405fa3fd29c457}{Index$<$ int $>$}.
+
+\hypertarget{class_simple_index_af6fae809369d2ae265f60c4a678e0a31}{\index{Simple\-Index@{Simple\-Index}!load\-\_\-lemma\-\_\-lex@{load\-\_\-lemma\-\_\-lex}}
+\index{load\-\_\-lemma\-\_\-lex@{load\-\_\-lemma\-\_\-lex}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{load\-\_\-lemma\-\_\-lex}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::load\-\_\-lemma\-\_\-lex (
+\begin{DoxyParamCaption}
+\item[{string}]{language, }
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_af6fae809369d2ae265f60c4a678e0a31}
+Function to load a Lexicon for Lemmatisation from a File.
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & The Language of the Lexicon \\
+\hline
+{\em filename} & The Lexicon File \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_index_a493941cf4eb8f3d149a5a521eb7fe3dd}{\index{Simple\-Index@{Simple\-Index}!print@{print}}
+\index{print@{print}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_a493941cf4eb8f3d149a5a521eb7fe3dd}
+Function to print the content of the \hyperlink{class_simple_index}{Simple\-Index} to Standard Out. \hypertarget{class_simple_index_a553b9446f1164b1bd72f4196d864153a}{\index{Simple\-Index@{Simple\-Index}!restore\-\_\-index@{restore\-\_\-index}}
+\index{restore\-\_\-index@{restore\-\_\-index}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{restore\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::restore\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{infile}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_a553b9446f1164b1bd72f4196d864153a}
+Function to load a \hyperlink{class_simple_index}{Simple\-Index} from a File (for example to restore a printed \hyperlink{class_simple_index}{Simple\-Index}\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$infile} & Pointer to a ifstream to read the \hyperlink{class_simple_index}{Simple\-Index} from \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_index_a7e05f794bbfadad54b0207b2c3ad1de1}{\index{Simple\-Index@{Simple\-Index}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{retrieve}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Document\-List}$<$ int $>$ $\ast$ Simple\-Index\-::retrieve (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_simple_index_a7e05f794bbfadad54b0207b2c3ad1de1}
+Function to return the \hyperlink{class_document_list}{Document\-List$<$int$>$} of documents containing the search term.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Search term to retrieve documents containing it \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_index_a149f5520f1c40fd73fd9ba1e683cec7d}{Index$<$ int $>$}.
+
+\hypertarget{class_simple_index_a2c0c087962efbf6b4cb9d38d1043d074}{\index{Simple\-Index@{Simple\-Index}!to\-\_\-file@{to\-\_\-file}}
+\index{to\-\_\-file@{to\-\_\-file}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{to\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::to\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_a2c0c087962efbf6b4cb9d38d1043d074}
+Function to print the content of the \hyperlink{class_simple_index}{Simple\-Index} to a File determined by filename.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File to print the \hyperlink{class_simple_index}{Simple\-Index} to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_simple_index_a31fa43913eed477552159b134a328463}{\index{Simple\-Index@{Simple\-Index}!to\-\_\-stream@{to\-\_\-stream}}
+\index{to\-\_\-stream@{to\-\_\-stream}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{to\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}void Simple\-Index\-::to\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{ostream $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_simple_index_a31fa43913eed477552159b134a328463}
+Function to print the content of the \hyperlink{class_simple_index}{Simple\-Index} to an ostream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$out} & Pointer to a ostream to print the index to \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_simple_index_a7d3e80897ed6c69cdd4d61297cde527a}{\index{Simple\-Index@{Simple\-Index}!doc\-\_\-info@{doc\-\_\-info}}
+\index{doc\-\_\-info@{doc\-\_\-info}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{doc\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Document\-Info} Simple\-Index\-::doc\-\_\-info}}\label{class_simple_index_a7d3e80897ed6c69cdd4d61297cde527a}
+Object to store Meta-\/data for the Documents in the \hyperlink{class_simple_index}{Simple\-Index} . \hypertarget{class_simple_index_aac925e5941373e3a2d711b3282618790}{\index{Simple\-Index@{Simple\-Index}!lang\-\_\-rec@{lang\-\_\-rec}}
+\index{lang\-\_\-rec@{lang\-\_\-rec}!SimpleIndex@{Simple\-Index}}
+\subsubsection[{lang\-\_\-rec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Language\-Recognizer} Simple\-Index\-::lang\-\_\-rec}}\label{class_simple_index_aac925e5941373e3a2d711b3282618790}
+Object to access the language recognising module. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_simple_index_8hpp}{Simple\-Index.\-hpp}\end{DoxyCompactItemize}

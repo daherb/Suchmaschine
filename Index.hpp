@@ -1,3 +1,9 @@
+/**
+ * @file Index.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
+
 #ifndef INDEX_H
 #define INDEX_H
 
@@ -12,20 +18,46 @@
 
 using namespace std;
 
-// Quasi-abstract class for a search index
+/**
+ * The Index class is the abstract class to define the basic funcitonality of a inverted search index
+ * @tparam T only used to determine the right type of DocumentList
+ */
 template<class T>
 class Index
 {
-  public:
-  // Add files either by filename or by filestream
+public:
+ /**
+  * Function to add a file described by a filename to the index 
+  *
+  * @param filename Name of a file to add
+  */
     void insert(string filename);
-  virtual void insert(ifstream *in, string filename) {};
-  // Return number of documents in the index
+ /**
+  * Abstract Function to add a file by using a input stream to the index. Needs to be
+  * overridden in concrete Implementations of an Index.
+  *
+  * @param *in Pointer to a input stream associated to the file
+  * @param filename The filename of the file associated with the in stream
+  */
+    virtual void insert(ifstream *in, string filename) {};
+ /**
+  * Function to return the number of documents in the index
+  *
+  */
     int count() const;
-  // Return document list for a term
+ /**
+  * Abstract Function to return the DocumentList of documents containing the search term. Needs to be 
+  * overridden in concrete Implementations of an Index
+  *
+  * @param key Search term to retrieve documents containing it
+  * @return DocumentList of documents containing \p key
+  */
     virtual DocumentList<T> *retrieve(string key) { return NULL; };
   protected:
-  // Number of Documents in index
+
+ /**
+  * Number of documents in the Index
+  */
     int doccount;
 };
 

@@ -1,24 +1,62 @@
+/**
+ * @file Searcher.cpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ * @mainpage Suchmaschine - A simple search engine
+ * 
+ * Start at class Searcher or read the README.md
+ */
+
 #include <iostream>
 #include "SimpleIndex.hpp"
 // #include "BooleanQuery.hpp"
 #include "SExpQuery.hpp"
 
 #define LEMMALEX_GERMAN string("lemmalex.deutsch")
+
 using namespace std;
+
+/**
+ * The Searcher class is the basic Class of the Search Engine. It provides Interface
+ * to and keeps track of the Search Index, the Query, etc.
+ */
 
 class Searcher
 {
   public:
+  /**
+   * Constructor that loads the Lemma Lexicon
+   */
     Searcher();
-    // Restore the search index
+  /**
+   * Function to restore a SimpleIndex from a File
+   *
+   * @param file Name of the Index-File to load
+   */
     void restore_index(string file);
-    // Load language data for language recognition
+  /**
+   * Function to restore a Language Model from a File
+   *
+   * @param file Name of the Language Model to load
+   */
     void load_language_data(string file);
-    // Add file to search index
+  /**
+   * Function to add a File to the Index
+   *
+   * @param file Name of the File to add
+   */
     void add_file(string file);
-    // Query the search index
+  /**
+   * Function to query the Index 
+   *
+   * @param q Query String depending on the Query Module used (default: SExpQuery)
+   */
     int query(string q);
-    // Store the search index into a file
+  /**
+   * Function to store a SimpleIndex to a File
+   *
+   * @param file Name of the Index-File to save to
+   */
     int store_index(string file);
   private:
     // Our index

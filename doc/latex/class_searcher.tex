@@ -1,0 +1,120 @@
+\hypertarget{class_searcher}{\section{Searcher Class Reference}
+\label{class_searcher}\index{Searcher@{Searcher}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_searcher_a46e9a9fa3aad21131cf6bd25237e3a80}{Searcher} ()
+\item 
+void \hyperlink{class_searcher_a3db46393d99b41fa91fdf0f9db7f957b}{restore\-\_\-index} (string file)
+\item 
+void \hyperlink{class_searcher_a0b9b5c94ce9231bfdab50adc8cf4dc35}{load\-\_\-language\-\_\-data} (string file)
+\item 
+void \hyperlink{class_searcher_acf134d158b2e3704adc5a4d93c9210b2}{add\-\_\-file} (string file)
+\item 
+int \hyperlink{class_searcher_abd3b11c670fffb96947d69614d5c8a9a}{query} (string q)
+\item 
+int \hyperlink{class_searcher_a9fc7cbccb44b50309ec0a7cb719c5e1e}{store\-\_\-index} (string file)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_searcher}{Searcher} class is the basic Class of the Search Engine. It provides Interface to and keeps track of the Search \hyperlink{class_index}{Index}, the \hyperlink{class_query}{Query}, etc. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_searcher_a46e9a9fa3aad21131cf6bd25237e3a80}{\index{Searcher@{Searcher}!Searcher@{Searcher}}
+\index{Searcher@{Searcher}!Searcher@{Searcher}}
+\subsubsection[{Searcher}]{\setlength{\rightskip}{0pt plus 5cm}Searcher\-::\-Searcher (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_a46e9a9fa3aad21131cf6bd25237e3a80}
+Constructor that loads the Lemma Lexicon 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_searcher_acf134d158b2e3704adc5a4d93c9210b2}{\index{Searcher@{Searcher}!add\-\_\-file@{add\-\_\-file}}
+\index{add\-\_\-file@{add\-\_\-file}!Searcher@{Searcher}}
+\subsubsection[{add\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void Searcher\-::add\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_acf134d158b2e3704adc5a4d93c9210b2}
+Function to add a File to the \hyperlink{class_index}{Index}
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the File to add \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_searcher_a0b9b5c94ce9231bfdab50adc8cf4dc35}{\index{Searcher@{Searcher}!load\-\_\-language\-\_\-data@{load\-\_\-language\-\_\-data}}
+\index{load\-\_\-language\-\_\-data@{load\-\_\-language\-\_\-data}!Searcher@{Searcher}}
+\subsubsection[{load\-\_\-language\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void Searcher\-::load\-\_\-language\-\_\-data (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_a0b9b5c94ce9231bfdab50adc8cf4dc35}
+Function to restore a Language Model from a File
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the Language Model to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_searcher_abd3b11c670fffb96947d69614d5c8a9a}{\index{Searcher@{Searcher}!query@{query}}
+\index{query@{query}!Searcher@{Searcher}}
+\subsubsection[{query}]{\setlength{\rightskip}{0pt plus 5cm}int Searcher\-::query (
+\begin{DoxyParamCaption}
+\item[{string}]{q}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_abd3b11c670fffb96947d69614d5c8a9a}
+Function to query the \hyperlink{class_index}{Index}
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \hyperlink{class_query}{Query} String depending on the \hyperlink{class_query}{Query} Module used (default\-: \hyperlink{class_s_exp_query}{S\-Exp\-Query}) \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_searcher_abd3b11c670fffb96947d69614d5c8a9a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_searcher_a3db46393d99b41fa91fdf0f9db7f957b}{\index{Searcher@{Searcher}!restore\-\_\-index@{restore\-\_\-index}}
+\index{restore\-\_\-index@{restore\-\_\-index}!Searcher@{Searcher}}
+\subsubsection[{restore\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}void Searcher\-::restore\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_a3db46393d99b41fa91fdf0f9db7f957b}
+Function to restore a \hyperlink{class_simple_index}{Simple\-Index} from a File
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the Index-\/\-File to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_searcher_a9fc7cbccb44b50309ec0a7cb719c5e1e}{\index{Searcher@{Searcher}!store\-\_\-index@{store\-\_\-index}}
+\index{store\-\_\-index@{store\-\_\-index}!Searcher@{Searcher}}
+\subsubsection[{store\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int Searcher\-::store\-\_\-index (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_searcher_a9fc7cbccb44b50309ec0a7cb719c5e1e}
+Function to store a \hyperlink{class_simple_index}{Simple\-Index} to a File
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the Index-\/\-File to save to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_searcher_8cpp}{Searcher.\-cpp}\end{DoxyCompactItemize}

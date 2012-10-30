@@ -1,3 +1,9 @@
+/**
+ * @file SExpQuery.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
+
 #ifndef SEXPQUERY_H
 #define SEXPQUERY_H
 
@@ -16,14 +22,39 @@ using namespace std;
 
 enum states { PreNode, ParseOperator, PostOperator, ParseOperand };
 
+/**
+ * The Node class is the foundation of a tree
+ */
 class Node
 {
   public:
+/**
+ * Pointer to the Parent Node
+ */
     Node *parent;
+/**
+ * List of Pointers to Child Nodes
+ */
     vector<Node *> children;
+/**
+ * A Value stored in the Node
+ */
     string value;
+/**
+ * Constructor only setting the Parent Node
+ * @param *p Pointer to the Parent Node
+ */
     Node(Node *p) { parent=p; }
+/**
+ * Constructor setting the Parent Node and Node Value
+ * @param *p Pointer to the Parent Node
+ * @param v Value to be stored in Node
+ */
     Node(Node *p, string v) { parent=p; value=v; }
+/**
+ * Function to print the whole Subtree of the Node
+ * @param in String used for Indentation
+ */
     void printTree(string in);
 };
 
@@ -36,16 +67,34 @@ void Node::printTree(string in)
     }
 }
 
-// Class to parse a query and store the resulting document list
+/**
+ * The SExpQuery class is the Implementation of a basic Query<int> Parser. A SExpQuery String
+ * is quite similar to Lisp-like expressions. The form of a Query Expression is (o e1 e2) with
+ * o one of AND, NOT, OR and e1,e2 either Document Terms or Query Expressions.
+ */
 class SExpQuery : public Query<int>
 {
   public: 
+/**
+ * Constructor to incorporate an SimpleIndex for the Evaluation and to set the result to NULL
+ *
+ * @param *i Pointer to the SimpleIndex to be used for Evaluation of the SExpQuery
+ */
     SExpQuery(SimpleIndex *i);
-  // Parse a boolean query
+/**
+ * Function to parse a Query and store the resulting SimpleDocumentList internally. 
+ *
+ * @param query The Query string to be evaluated
+ */
     void parse(string query);
-  // Return the resulting document list
+/**
+ * Funtion to return the resulting SimpleDocumentList
+ *
+ * @return SimpleDocumentList containing the documents selected by a previous query
+ */
     SimpleDocumentList *get_result();
   private:
+    Util u;
     SimpleDocumentList *interpret(Node *tree);
     Node *stree;
   // The resulting DocumentList
@@ -93,7 +142,7 @@ void SExpQuery::parse(string query)
 	  else
 	    {
 	      curstate=PostOperator;
-	      curnode->value=normalize(op);
+	      curnode->value=u.normalize(op);
 	      op="";
 	    }
 	}
@@ -114,7 +163,7 @@ void SExpQuery::parse(string query)
 	  else
 	    {
 	      curstate=PostOperator;
-	      curnode->children.push_back(new Node(curnode,normalize(operand)));
+	      curnode->children.push_back(new Node(curnode,u.normalize(operand)));
 	      operand="";
 	    }
 	}

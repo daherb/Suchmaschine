@@ -1,0 +1,109 @@
+\hypertarget{class_document_info}{\section{Document\-Info Class Reference}
+\label{class_document_info}\index{Document\-Info@{Document\-Info}}
+}
+
+
+{\ttfamily \#include $<$Document\-Info.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_document_info_ab9ddd0c8ea97cbea9c4d4ecf60ceef75}{set} (int id, string tag, string value)
+\item 
+string \hyperlink{class_document_info_a89a1c16cbd88f1340d04d00262695be3}{get} (int id, string tag)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_document_info_a8ebadbfdf61a4e5d0c37bd03bc49c535}{get\-\_\-all} (string tag, string value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_document_info}{Document\-Info} class is a class to store and query Meta-\/data for Document I\-Ds. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_document_info_a89a1c16cbd88f1340d04d00262695be3}{\index{Document\-Info@{Document\-Info}!get@{get}}
+\index{get@{get}!DocumentInfo@{Document\-Info}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}string Document\-Info\-::get (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{string}]{tag}
+\end{DoxyParamCaption}
+)}}\label{class_document_info_a89a1c16cbd88f1340d04d00262695be3}
+Function to retrieve Meta-\/date stored for Document I\-D with Tag
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Document I\-D the Data is stored for \\
+\hline
+{\em tag} & Tag for the Meta-\/data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the Meta-\/data stored for Document I\-D with Tag 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_document_info_a89a1c16cbd88f1340d04d00262695be3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_document_info_a8ebadbfdf61a4e5d0c37bd03bc49c535}{\index{Document\-Info@{Document\-Info}!get\-\_\-all@{get\-\_\-all}}
+\index{get\-\_\-all@{get\-\_\-all}!DocumentInfo@{Document\-Info}}
+\subsubsection[{get\-\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ Document\-Info\-::get\-\_\-all (
+\begin{DoxyParamCaption}
+\item[{string}]{tag, }
+\item[{string}]{value}
+\end{DoxyParamCaption}
+)}}\label{class_document_info_a8ebadbfdf61a4e5d0c37bd03bc49c535}
+Function to retrieve all Documents where the Meta-\/date with the selected Tag has the given Value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Tag for the Meta-\/data \\
+\hline
+{\em value} & Value to filter the Meta-\/data for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a List of all Documents where the Tag has the Value\-Gets all documents where the metadata tag has the value 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_document_info_a8ebadbfdf61a4e5d0c37bd03bc49c535_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_document_info_ab9ddd0c8ea97cbea9c4d4ecf60ceef75}{\index{Document\-Info@{Document\-Info}!set@{set}}
+\index{set@{set}!DocumentInfo@{Document\-Info}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void Document\-Info\-::set (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{string}]{tag, }
+\item[{string}]{value}
+\end{DoxyParamCaption}
+)}}\label{class_document_info_ab9ddd0c8ea97cbea9c4d4ecf60ceef75}
+Function to store Meta-\/data for a Document.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The Document I\-D to associate the Meta-\/data with \\
+\hline
+{\em tag} & The Identifier for the Data field \\
+\hline
+{\em value} & The Value to store in the Cell determined by Document I\-D and Tag \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_document_info_8hpp}{Document\-Info.\-hpp}\end{DoxyCompactItemize}

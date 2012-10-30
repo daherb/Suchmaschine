@@ -1,0 +1,103 @@
+\hypertarget{class_s_exp_query}{\section{S\-Exp\-Query Class Reference}
+\label{class_s_exp_query}\index{S\-Exp\-Query@{S\-Exp\-Query}}
+}
+
+
+{\ttfamily \#include $<$S\-Exp\-Query.\-hpp$>$}
+
+
+
+Inheritance diagram for S\-Exp\-Query\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_s_exp_query__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for S\-Exp\-Query\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_s_exp_query__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_s_exp_query_a990f906c78b84672e089dd2207cd2498}{S\-Exp\-Query} (\hyperlink{class_simple_index}{Simple\-Index} $\ast$i)
+\item 
+void \hyperlink{class_s_exp_query_a38bc807bf8216b6a9530128280cf709f}{parse} (string query)
+\item 
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} $\ast$ \hyperlink{class_s_exp_query_a6e413aa8c2d5dc6d7d32682028543b38}{get\-\_\-result} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_s_exp_query}{S\-Exp\-Query} class is the Implementation of a basic \hyperlink{class_query}{Query$<$int$>$} Parser. A \hyperlink{class_s_exp_query}{S\-Exp\-Query} String is quite similar to Lisp-\/like expressions. The form of a \hyperlink{class_query}{Query} Expression is (o e1 e2) with o one of A\-N\-D, N\-O\-T, O\-R and e1,e2 either Document Terms or \hyperlink{class_query}{Query} Expressions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_s_exp_query_a990f906c78b84672e089dd2207cd2498}{\index{S\-Exp\-Query@{S\-Exp\-Query}!S\-Exp\-Query@{S\-Exp\-Query}}
+\index{S\-Exp\-Query@{S\-Exp\-Query}!SExpQuery@{S\-Exp\-Query}}
+\subsubsection[{S\-Exp\-Query}]{\setlength{\rightskip}{0pt plus 5cm}S\-Exp\-Query\-::\-S\-Exp\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\-Index} $\ast$}]{i}
+\end{DoxyParamCaption}
+)}}\label{class_s_exp_query_a990f906c78b84672e089dd2207cd2498}
+Constructor to incorporate an \hyperlink{class_simple_index}{Simple\-Index} for the Evaluation and to set the result to N\-U\-L\-L
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$i} & Pointer to the \hyperlink{class_simple_index}{Simple\-Index} to be used for Evaluation of the \hyperlink{class_s_exp_query}{S\-Exp\-Query} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_s_exp_query_a6e413aa8c2d5dc6d7d32682028543b38}{\index{S\-Exp\-Query@{S\-Exp\-Query}!get\-\_\-result@{get\-\_\-result}}
+\index{get\-\_\-result@{get\-\_\-result}!SExpQuery@{S\-Exp\-Query}}
+\subsubsection[{get\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Simple\-Document\-List} $\ast$ S\-Exp\-Query\-::get\-\_\-result (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_s_exp_query_a6e413aa8c2d5dc6d7d32682028543b38}
+Funtion to return the resulting \hyperlink{class_simple_document_list}{Simple\-Document\-List}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_simple_document_list}{Simple\-Document\-List} containing the documents selected by a previous query 
+\end{DoxyReturn}
+\hypertarget{class_s_exp_query_a38bc807bf8216b6a9530128280cf709f}{\index{S\-Exp\-Query@{S\-Exp\-Query}!parse@{parse}}
+\index{parse@{parse}!SExpQuery@{S\-Exp\-Query}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Exp\-Query\-::parse (
+\begin{DoxyParamCaption}
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_s_exp_query_a38bc807bf8216b6a9530128280cf709f}
+Function to parse a \hyperlink{class_query}{Query} and store the resulting \hyperlink{class_simple_document_list}{Simple\-Document\-List} internally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The \hyperlink{class_query}{Query} string to be evaluated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_query_ac3939e4f331ca927c6215db0f7cfe740}{Query$<$ int $>$}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_s_exp_query_a38bc807bf8216b6a9530128280cf709f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_s_exp_query_8hpp}{S\-Exp\-Query.\-hpp}\end{DoxyCompactItemize}

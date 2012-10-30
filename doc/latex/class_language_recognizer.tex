@@ -1,0 +1,154 @@
+\hypertarget{class_language_recognizer}{\section{Language\-Recognizer Class Reference}
+\label{class_language_recognizer}\index{Language\-Recognizer@{Language\-Recognizer}}
+}
+
+
+{\ttfamily \#include $<$Language\-Recognizer.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_language_recognizer_a7666110539b22aa34755e596040d91d6}{training} (string language, string filename)
+\item 
+void \hyperlink{class_language_recognizer_a9080396f9a5a82eee0da30109b9bf447}{training} (string language, ifstream $\ast$in)
+\item 
+set$<$ string $>$ $\ast$ \hyperlink{class_language_recognizer_a600cf39af5a64d88c3cb72ba14dc22d3}{recognize} (string line)
+\item 
+set$<$ string $>$ $\ast$ \hyperlink{class_language_recognizer_a754c1a9932fae3f0860e995a5938b620}{recognize} (istream $\ast$in)
+\item 
+void \hyperlink{class_language_recognizer_a8fe8b4d3c7097f2975c2615a50205dde}{to\-\_\-file} (string filename)
+\item 
+void \hyperlink{class_language_recognizer_a6cac97de2fd002bd92db18f14676054a}{to\-\_\-stream} (ostream $\ast$out)
+\item 
+void \hyperlink{class_language_recognizer_a85bf44e669e17ace2342c969976574a8}{store} ()
+\item 
+void \hyperlink{class_language_recognizer_a294cf1e40cdc3573624959157c8a559a}{restore} (string filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_language_recognizer}{Language\-Recognizer} class is a class to implement a Language Identification Module based on a byte-\/trigram language model. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_language_recognizer_a600cf39af5a64d88c3cb72ba14dc22d3}{\index{Language\-Recognizer@{Language\-Recognizer}!recognize@{recognize}}
+\index{recognize@{recognize}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{recognize}]{\setlength{\rightskip}{0pt plus 5cm}set$<$ string $>$ $\ast$ Language\-Recognizer\-::recognize (
+\begin{DoxyParamCaption}
+\item[{string}]{line}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a600cf39af5a64d88c3cb72ba14dc22d3}
+Function to identify the language of a String
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & String to be identified \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a Set of recognized Languages 
+\end{DoxyReturn}
+\hypertarget{class_language_recognizer_a754c1a9932fae3f0860e995a5938b620}{\index{Language\-Recognizer@{Language\-Recognizer}!recognize@{recognize}}
+\index{recognize@{recognize}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{recognize}]{\setlength{\rightskip}{0pt plus 5cm}set$<$ string $>$ $\ast$ Language\-Recognizer\-::recognize (
+\begin{DoxyParamCaption}
+\item[{istream $\ast$}]{in}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a754c1a9932fae3f0860e995a5938b620}
+Function to identify the language of a File
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$in} & Pointer to an istream of a File to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a Set of recognized Languages 
+\end{DoxyReturn}
+\hypertarget{class_language_recognizer_a294cf1e40cdc3573624959157c8a559a}{\index{Language\-Recognizer@{Language\-Recognizer}!restore@{restore}}
+\index{restore@{restore}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{restore}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::restore (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a294cf1e40cdc3573624959157c8a559a}
+Function to restore the Language Model from a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File the model shall be restored from \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_language_recognizer_a85bf44e669e17ace2342c969976574a8}{\index{Language\-Recognizer@{Language\-Recognizer}!store@{store}}
+\index{store@{store}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{store}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::store (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a85bf44e669e17ace2342c969976574a8}
+Function to store the Language Model to a default file determined by Constant L\-A\-N\-G\-U\-A\-G\-E\-\_\-\-F\-I\-L\-E. \hypertarget{class_language_recognizer_a8fe8b4d3c7097f2975c2615a50205dde}{\index{Language\-Recognizer@{Language\-Recognizer}!to\-\_\-file@{to\-\_\-file}}
+\index{to\-\_\-file@{to\-\_\-file}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{to\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::to\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a8fe8b4d3c7097f2975c2615a50205dde}
+Function to store the Language Model to a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File to store to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_language_recognizer_a6cac97de2fd002bd92db18f14676054a}{\index{Language\-Recognizer@{Language\-Recognizer}!to\-\_\-stream@{to\-\_\-stream}}
+\index{to\-\_\-stream@{to\-\_\-stream}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{to\-\_\-stream}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::to\-\_\-stream (
+\begin{DoxyParamCaption}
+\item[{ostream $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a6cac97de2fd002bd92db18f14676054a}
+Function to store the Language Model to a Stream
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$out} & Pointer to an ostram to store to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_language_recognizer_a7666110539b22aa34755e596040d91d6}{\index{Language\-Recognizer@{Language\-Recognizer}!training@{training}}
+\index{training@{training}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{training}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::training (
+\begin{DoxyParamCaption}
+\item[{string}]{language, }
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a7666110539b22aa34755e596040d91d6}
+Function to train the language model by adding a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & Language the file shall be added to Language data \\
+\hline
+{\em filename} & Name of a file to add \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_language_recognizer_a9080396f9a5a82eee0da30109b9bf447}{\index{Language\-Recognizer@{Language\-Recognizer}!training@{training}}
+\index{training@{training}!LanguageRecognizer@{Language\-Recognizer}}
+\subsubsection[{training}]{\setlength{\rightskip}{0pt plus 5cm}void Language\-Recognizer\-::training (
+\begin{DoxyParamCaption}
+\item[{string}]{language, }
+\item[{ifstream $\ast$}]{in}
+\end{DoxyParamCaption}
+)}}\label{class_language_recognizer_a9080396f9a5a82eee0da30109b9bf447}
+Function to train the language model by adding a file
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & Language the file shall be added to Language data \\
+\hline
+{\em $\ast$in} & Pointer to a ifstream to read the file content from \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_language_recognizer_8hpp}{Language\-Recognizer.\-hpp}\end{DoxyCompactItemize}

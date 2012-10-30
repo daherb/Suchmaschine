@@ -1,3 +1,9 @@
+/**
+ * @file BooleanQuery.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
+
 #ifndef BOOLEANQUERY_H
 #define BOOLEANQUERY_H
 
@@ -13,16 +19,34 @@
 
 using namespace std;
 
-// Class to parse a query and store the resulting document list
+/**
+ * The BooleanQuery class is the Implementation of a basic Query<int> Parser. A BooleanQuery String
+ * consists of Document Terms connected by the boolean Operators AND, OR and NOT. The Query String
+ * is evaluated from left to right.
+ */
 class BooleanQuery : public Query<int>
 {
   public: 
+/**
+ * Constructor to incorporate an SimpleIndex for the Evaluation and to set the result to NULL
+ *
+ * @param *i Pointer to the SimpleIndex to be used for Evaluation of the BooleanQuery
+ */
     BooleanQuery(SimpleIndex *i);
-  // Parse a boolean query
+/**
+ * Function to parse a Query and store the resulting SimpleDocumentList internally. The Query is evaluated from left to right.
+ *
+ * @param query The Query string to be evaluated. Consisting of search terms and the boolean Operators AND, OR and NOT
+ */
     void parse(string query);
-  // Return the resulting document list
+/**
+ * Funtion to return the resulting SimpleDocumentList
+ *
+ * @return SimpleDocumentList containing the documents selected by a previous query
+ */
     SimpleDocumentList *get_result();
   private:
+    Util u;
   // List of terms in query
     vector<string> term_list;
   // List of operators in query
@@ -43,7 +67,7 @@ void BooleanQuery::parse(string query)
   vector<string> *v=tokenize(query);
   for (int pos=0; pos<(int)v->size();pos++)
     {
-      string nword=normalize(v->at(pos));
+      string nword=u.normalize(v->at(pos));
 #ifdef DEBUG
       cout << nword << endl;
 #endif

@@ -1,3 +1,8 @@
+/**
+ * @file LanguageRecognizer.hpp
+ * @author  Herbert Lange <herbert.lange@campus.lmu.de>
+ * @version 1.0
+ */
 #ifndef _LANGUAGE_HPP
 #define _LANGUAGE_HPP
 
@@ -11,21 +16,70 @@
 #include "Util.hpp"
 
 #define TOP_FACTOR 20
+#define LANGUAGE_FILE "language.dat"
 
 using namespace std;
 
+/**
+ * The LanguageRecognizer class is a class to implement a Language Identification Module
+ * based on a byte-trigram language model.
+ */
 class LanguageRecognizer {
   public:
+ /**
+  * Function to train the language model by adding a file
+  *
+  * @param language Language the file shall be added to Language data
+  * @param filename Name of a file to add
+  */
     void training(string language, string filename);
+ /**
+  * Function to train the language model by adding a file
+  *
+  * @param language Language the file shall be added to Language data
+  * @param *in Pointer to a ifstream to read the file content from
+  */
     void training(string language, ifstream *in);
+ /**
+  * Function to identify the language of a String
+  *
+  * @param line String to be identified
+  * @return Pointer to a Set of recognized Languages
+  */
     set<string> *recognize(string line);
+ /**
+  * Function to identify the language of a File
+  *
+  * @param *in Pointer to an istream of a File to read
+  * @return Pointer to a Set of recognized Languages
+  */
     set<string> *recognize(istream* in);
+ /**
+  * Function to store the Language Model to a file
+  *
+  * @param filename File to store to
+  */
     void to_file(string filename);
+ /**
+  * Function to store the Language Model to a Stream
+  *
+  * @param *out Pointer to an ostram to store to
+  */
     void to_stream(ostream *out);
+ /**
+  * Function to store the Language Model to a default file determined by Constant LANGUAGE_FILE.
+  *
+  */
     void store();
+ /**
+  * Function to restore the Language Model from a file.
+  *
+  * @param filename File the model shall be restored from
+  */
     void restore(string filename);
   private:
     void trim(string language);
+    Util u;
     // Hash to recognize languages
     unordered_map<string,set<string>> knowsyourlanguage;
     // Generate complete trigram frequency list
@@ -55,7 +109,7 @@ void LanguageRecognizer::training(string language, ifstream *in)
     {
       string word;
       *in >> word;
-      string nword=normalize(word);
+      string nword=u.normalize(word);
       if (nword.length()<3)
 	{
 	  if (nword.length()>0)
@@ -145,7 +199,7 @@ set<string> *LanguageRecognizer::recognize(istream *in)
     {
       string word;
       *in >> word;
-      string nword=normalize(word);
+      string nword=u.normalize(word);
       if (nword.length()<3)
 	{
 	  if (nword.length()>0)
@@ -228,7 +282,7 @@ void LanguageRecognizer::to_stream(ostream *out)
 
 void LanguageRecognizer::store()
 {
-  to_file("language.dat");
+  to_file(LANGUAGE_FILE);
 }
 
 void LanguageRecognizer::restore(string filename)

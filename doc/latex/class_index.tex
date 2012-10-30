@@ -1,0 +1,121 @@
+\hypertarget{class_index}{\section{Index$<$ T $>$ Class Template Reference}
+\label{class_index}\index{Index$<$ T $>$@{Index$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Index.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_index_a35c85c7054c05c544d9060e7acf050e0}{insert} (string filename)
+\item 
+virtual void \hyperlink{class_index_a95b7be97caee4aacf0405fa3fd29c457}{insert} (ifstream $\ast$in, string filename)
+\item 
+int \hyperlink{class_index_adceb37c739cf21b06cbb7dbd2913bfec}{count} () const 
+\item 
+virtual \hyperlink{class_document_list}{Document\-List}$<$ T $>$ $\ast$ \hyperlink{class_index_a149f5520f1c40fd73fd9ba1e683cec7d}{retrieve} (string key)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_index_a40fd362b0f1e15ca09cf6c5234f202a2}{doccount}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Index$<$ T $>$}
+
+The \hyperlink{class_index}{Index} class is the abstract class to define the basic funcitonality of a inverted search index 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & only used to determine the right type of \hyperlink{class_document_list}{Document\-List} \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_index_adceb37c739cf21b06cbb7dbd2913bfec}{\index{Index@{Index}!count@{count}}
+\index{count@{count}!Index@{Index}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Index}$<$ T $>$\-::count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_index_adceb37c739cf21b06cbb7dbd2913bfec}
+Function to return the number of documents in the index \hypertarget{class_index_a35c85c7054c05c544d9060e7acf050e0}{\index{Index@{Index}!insert@{insert}}
+\index{insert@{insert}!Index@{Index}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Index}$<$ T $>$\-::insert (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_index_a35c85c7054c05c544d9060e7acf050e0}
+Function to add a file described by a filename to the index
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of a file to add \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{class_index_a35c85c7054c05c544d9060e7acf050e0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_index_a95b7be97caee4aacf0405fa3fd29c457}{\index{Index@{Index}!insert@{insert}}
+\index{insert@{insert}!Index@{Index}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf Index}$<$ T $>$\-::insert (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{in, }
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_index_a95b7be97caee4aacf0405fa3fd29c457}
+Abstract Function to add a file by using a input stream to the index. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$in} & Pointer to a input stream associated to the file \\
+\hline
+{\em filename} & The filename of the file associated with the in stream \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_simple_index_ac4dd08c90e6d0301e9c904103404438a}{Simple\-Index}.
+
+\hypertarget{class_index_a149f5520f1c40fd73fd9ba1e683cec7d}{\index{Index@{Index}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!Index@{Index}}
+\subsubsection[{retrieve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual {\bf Document\-List}$<$T$>$$\ast$ {\bf Index}$<$ T $>$\-::retrieve (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_index_a149f5520f1c40fd73fd9ba1e683cec7d}
+Abstract Function to return the \hyperlink{class_document_list}{Document\-List} of documents containing the search term. Needs to be overridden in concrete Implementations of an \hyperlink{class_index}{Index}
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Search term to retrieve documents containing it \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_document_list}{Document\-List} of documents containing {\ttfamily key} 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_simple_index_a7e05f794bbfadad54b0207b2c3ad1de1}{Simple\-Index}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_index_a40fd362b0f1e15ca09cf6c5234f202a2}{\index{Index@{Index}!doccount@{doccount}}
+\index{doccount@{doccount}!Index@{Index}}
+\subsubsection[{doccount}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Index}$<$ T $>$\-::doccount\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_index_a40fd362b0f1e15ca09cf6c5234f202a2}
+Number of documents in the \hyperlink{class_index}{Index} 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_index_8hpp}{Index.\-hpp}\end{DoxyCompactItemize}
